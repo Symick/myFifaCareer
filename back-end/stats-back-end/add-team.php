@@ -25,9 +25,9 @@ if (emptyInputAddTeam($teamName) !== false) {
     exit();
 }
 
-if (invalidTeamname($teamName) !== false) {
+if (invalidTeamName($teamName) !== false) {
     header('location: ../../statstracker.php#sidebar');
-    $_SESSION['error'] = "Invalid teamname";
+    $_SESSION['error'] = "Invalid team name";
     exit();
 }
 

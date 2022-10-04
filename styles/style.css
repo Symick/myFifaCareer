@@ -168,7 +168,7 @@ p::first-letter,
 	transition: transform 2s cubic-bezier(0.47, -1.25, 0.4, 1.99);
 }
 
-/*left en nav menu hebben zelfde breedte om space between correct te laten werken.*/
+/*left and nave menu have the same width to make the logo get stuck in the middle of the header.*/
 .left {
 	width: calc((100% - 250px) / 2);
 }
@@ -406,8 +406,9 @@ p::first-letter,
 	float: left;
 	aspect-ratio: 275/328;
 }
-/* 7 fotos dus elke foto blijft een 8ste deel van de animatie op beeld 
-dus 100/8 =12.5 en gezien 100/7 - 12.5 = 1.8 zijn dit de interval percentages. 
+/* 7 photos so every photo stay on screen for one eight of the animation. 
+100/8 =12.5 and 100/7 - 12.5 = 1.8 means the interval percentage is 1.8% to make an even
+transition between to pictures. 
 */
 @keyframes slider {
 	0% {

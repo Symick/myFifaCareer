@@ -8,7 +8,7 @@ function emptyInputAddTeam($teamName)
     }
     return $error;
 }
-function invalidTeamname($teamName)
+function invalidTeamName($teamName)
 {
     if (!preg_match('/^[\p{L}0-9. ]*$/u', $teamName)) {
         $error = true;

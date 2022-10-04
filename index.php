@@ -147,7 +147,7 @@
           <h2 class="title">about us</h2>
           <p class="about-us-text">
             We at MyFIFAcareer are inspired to become the most popular website
-            too track your FIFA careermode and ultimate team playerstats. For
+            too track your FIFA careermode and ultimate team player stats. For
             all the nerds out there wanting to know which player was your club
             top scorer or top assister, MyFIFAcareer is the website to use.
           </p>
