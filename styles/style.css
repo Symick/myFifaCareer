@@ -1,0 +1,1160 @@
+/*  ==================
+    general styling
+    ==================
+*/
+:root {
+	--primary-color: #030564;
+	--secondary-color: #f3d00c;
+	--scrollbar-color: #030564;
+	--Complementary-color: #640305;
+	--color-red: #ff1818;
+	--color-green: hsl(110, 93%, 22%);
+
+	--main-font: "Montserrat", sans-serif;
+	--header-font: "Comfortaa", Arial;
+	--btn-font: "Comfortaa", Arial;
+
+	--hamburger-height: 5px;
+	--btn-transition: all 300ms ease-in-out;
+
+	--confortaa-normal: 300;
+	--comfortaa-bold: 700;
+	--montserrat-thin: 100;
+	--montserrat-normal: 400;
+	--montserrat-bold: 700;
+}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+html {
+	scroll-behavior: smooth;
+	height: 100%;
+	scrollbar-width: auto;
+	scrollbar-color: #020341 var(--scrollbar-color);
+}
+/*  =================
+        scrollbar styling
+        =================
+    */
+::-webkit-scrollbar {
+	width: 10px;
+	background-color: var(--scrollbar-color);
+}
+::-webkit-scrollbar-track {
+	background-color: #000;
+	margin-top: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #020341;
+}
+.teams-container::-webkit-scrollbar,
+.teams-container::-webkit-scrollbar-track {
+	background-color: var(--primary-color);
+	border-radius: 10vw;
+}
+.teams-container::-webkit-scrollbar-thumb {
+	background-color: var(--Complementary-color);
+}
+
+/*  =================
+        input styling
+        =================
+    */
+label {
+	display: block;
+}
+label::after {
+	content: ":";
+}
+input {
+	border: none;
+}
+input[type="text"],
+input[type="password"] {
+	font-family: var(--main-font);
+	font-size: 1.2rem;
+}
+input[type="radio"] {
+	cursor: pointer;
+	display: none;
+}
+input[type="radio"] + label,
+input[type="radio"] + label::after {
+	cursor: pointer;
+	content: "";
+}
+
+/* specifically hide the arrow on focus */
+[list]::-webkit-calendar-picker-indicator {
+	display: none !important;
+}
+
+.btn {
+	padding: 1em 0.5em;
+	border: none;
+	background-color: var(--secondary-color);
+	border-radius: 10vw;
+	font-family: var(--btn-font);
+	font-weight: var(--confortaa-normal);
+	color: var(--primary-color);
+	font-size: 2rem;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+	transform: scale(1);
+	cursor: pointer;
+}
+.btn:hover,
+.btn:focus {
+	outline: none;
+	transform: scale(1.1);
+	font-weight: var(--comfortaa-bold);
+}
+
+input:focus {
+	outline: none;
+	border: 2px solid var(--secondary-color) !important;
+}
+
+body {
+	font-family: var(--main-font);
+	background: #8b85ff;
+	line-height: 1.5;
+	height: 100%;
+}
+section {
+	width: 100%;
+	min-height: 100vh;
+}
+.title {
+	font-size: 3.2rem;
+	margin-bottom: 1em;
+}
+.error-display {
+	font-weight: 700;
+	font-size: 1.5rem;
+}
+p::first-letter,
+.title::first-letter {
+	text-transform: uppercase;
+}
+/* styling indexpage */
+/*  ===========
+    1.styling header
+    ===========
+*/
+.header {
+	background-color: var(--primary-color);
+	width: 100%;
+	display: flex;
+	position: fixed;
+	height: 50px;
+	justify-content: space-between;
+	align-items: center;
+	top: 0;
+	z-index: 999;
+	box-shadow: 0 0 0.5em 0.25em #111;
+	transition: background-color 200ms ease-in;
+}
+
+/*
+    styling of logo
+*/
+.logo {
+	--rotate: 0;
+	max-width: 250px;
+	transform: rotate(calc(var(--rotate) * 1deg));
+	transition: transform 2s cubic-bezier(0.47, -1.25, 0.4, 1.99);
+}
+
+/*left en nav menu hebben zelfde breedte om space between correct te laten werken.*/
+.left {
+	width: calc((100% - 250px) / 2);
+}
+
+/*  ==========
+    1.1 styling navigation menu
+    ==========
+*/
+.nav-menu {
+	width: calc((100% - 250px) / 2);
+	font-size: 25px;
+}
+.nav-menu ul {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+}
+.nav-menu ul li {
+	list-style: none;
+	text-align: center;
+}
+
+.nav-menu ul li a {
+	position: relative;
+	color: var(--secondary-color);
+	text-decoration: none;
+	text-align: center;
+	padding: 5px;
+	font-family: var(--header-font);
+}
+
+.nav-menu a:focus {
+	outline: none;
+}
+
+.nav-menu ul li a:hover::after,
+.nav-menu ul li a:focus::after {
+	font-weight: 700;
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+.nav-menu ul li a::after {
+	content: "";
+	position: absolute;
+	background: var(--secondary-color);
+	border-radius: 10vw;
+	transition: all 300ms ease-in;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	transform: scaleX(0);
+	transform-origin: left;
+}
+
+/*  ==========
+    1.1.1 styling login-form
+    the login form is inside of the login list-item inside of the navigation.
+    ==========
+*/
+.login {
+	position: relative;
+}
+
+.login-form {
+	position: absolute;
+	left: -2.5em;
+	top: 0px;
+	font-size: 1em;
+	width: 10em;
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
+	padding: 0.5em;
+	text-align: left;
+	border-radius: 0 0 10px 10px;
+	visibility: hidden;
+	z-index: 998;
+	transition: all 300ms ease-in-out;
+}
+
+/* make the form visible when interacted by user */
+.login:target .login-form,
+.login:focus-within .login-form,
+.login:hover .login-form {
+	visibility: visible;
+	top: 44.75px;
+	transition: all 300ms ease-in-out;
+}
+
+.login-form input {
+	margin: 1em 0;
+	border-radius: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	background: #f2f2f2;
+	padding: 2px 5px;
+	width: 90%;
+}
+
+.login--password-wrapper {
+	position: relative;
+	width: 100%;
+}
+
+.fa-eye,
+.fa-eye-slash {
+	position: absolute;
+	right: 10%;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #100000;
+	cursor: pointer;
+	font-size: 0.9em;
+}
+
+.login-btn {
+	width: 80%;
+	margin: 0 auto 1em auto;
+	padding: 0.25em;
+	transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+.login-btn:hover,
+.login-btn:focus {
+	opacity: 0.9;
+}
+
+/*  =======================================
+    styling of header when at about-us page
+    =======================================
+*/
+.nav-at--about-us {
+	background-color: var(--Complementary-color);
+	transition: background-color 200ms ease-out;
+}
+
+.nav-at--about-us .login-form {
+	background-color: var(--Complementary-color);
+	transition: background-color 200ms ease-out;
+}
+/*  ======================
+    2.styling main content
+    ======================
+*/
+.wrapper {
+	width: 95%;
+	margin: 5em auto;
+}
+
+/*  ===================== 
+    2.1 styling welcome section
+    =====================
+*/
+
+.welcome {
+	width: 100%;
+	position: relative;
+}
+.image-background {
+	width: 100%;
+	height: 100%;
+	inset: 0;
+	position: absolute;
+	z-index: -1;
+	mix-blend-mode: overlay;
+}
+.welcome > .wrapper {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 0;
+	padding-top: 5em;
+}
+/*  ============
+    2.1.1 styling left side of welcome section
+*/
+.welcome-left {
+	width: 50%;
+	height: 100%;
+	padding: 1em;
+	text-align: center;
+	position: relative;
+}
+.welcome-title {
+	font-size: 4.5rem;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	text-align: left;
+}
+.welcome-text {
+	font-size: 2.5em;
+	margin-bottom: 1.5em;
+	text-align: left;
+}
+/*  =====================================
+    2.1.2 styling of link to sign-up page
+    =====================================
+*/
+.sign-up-btn {
+	text-decoration: none;
+	color: var(--secondary-color);
+	background: var(--primary-color);
+	transition: var(--btn-transition);
+}
+
+/*  ===================================================
+    2.2 styling of the right side of the welcome section
+    ===================================================
+
+*/
+.welcome-right {
+	width: 40%;
+	padding: 5em;
+}
+/*  =================================
+    2.2.1 styling of the image slider
+    =================================
+*/
+.slider {
+	width: 90%;
+	margin: 0 auto;
+	overflow: hidden;
+	border: 10px solid var(--primary-color);
+	border-radius: 10px;
+	background-color: var(--primary-color);
+}
+.slider figure {
+	position: relative;
+	width: 700%;
+	margin: 0;
+	left: 0;
+	animation: 25s slider infinite;
+	border: none;
+}
+.slider figure img {
+	width: calc(100% / 7);
+	float: left;
+	aspect-ratio: 275/328;
+}
+/* 7 fotos dus elke foto blijft een 8ste deel van de animatie op beeld 
+dus 100/8 =12.5 en gezien 100/7 - 12.5 = 1.8 zijn dit de interval percentages. 
+*/
+@keyframes slider {
+	0% {
+		left: 0;
+	}
+	12.5% {
+		left: 0;
+	}
+	14.3% {
+		left: -100%;
+	}
+	26.6% {
+		left: -100%;
+	}
+	28.4% {
+		left: -200%;
+	}
+	40.9% {
+		left: -200%;
+	}
+	42.7% {
+		left: -300%;
+	}
+	55.2% {
+		left: -300%;
+	}
+	57% {
+		left: -400%;
+	}
+	69.5% {
+		left: -400%;
+	}
+	71.3% {
+		left: -500%;
+	}
+	83.8% {
+		left: -500%;
+	}
+	85.6% {
+		left: -600%;
+	}
+	100% {
+		left: -600%;
+	}
+}
+
+/*  ==================================
+   3.styling how does it work section
+    ==================================*/
+
+.how-does-it-work {
+	width: 100%;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 0.5em;
+	margin: 0.5em;
+}
+
+/*  =========================
+    3.1 styling of grid-items
+    =========================   */
+
+.grid-item {
+	background: var(--primary-color);
+	padding: 0.5em 1em;
+	border-radius: 10px 5px 10px 5px;
+}
+.grid-title {
+	font-size: 1.8rem;
+	color: var(--secondary-color);
+	margin-bottom: 1em;
+}
+.grid-item img {
+	width: 100%;
+	box-shadow: 0 0 2em 1em rgba(139, 133, 255, 0.2);
+	transform: scale(1);
+	transition: transform 300ms ease-in-out;
+}
+.grid-item img:hover {
+	transform: scale(1.1);
+}
+
+.grid-text {
+	font-size: 1em;
+	color: var(--secondary-color);
+	margin-top: 0.5em;
+}
+
+/* ===========================
+    4. styling about us page
+    ==========================*/
+
+.about-us {
+	background: var(--secondary-color);
+	color: var(--secondary-color);
+	min-height: 100vh;
+}
+.clip-path-container {
+	background-color: var(--primary-color);
+	min-height: inherit;
+	width: 100%;
+	clip-path: polygon(
+		8vw 0%,
+		100vw 0%,
+		100vw calc(100% - 8vw),
+		92vw 100vh,
+		0% 100vh,
+		0% 8vw
+	);
+	text-align: center;
+	color: #f1f1f1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.clip-path-container .title {
+	color: var(--secondary-color);
+}
+
+.about-us-wrapper {
+	padding: 0 15%;
+}
+
+.about-us-text {
+	text-align: left;
+	margin: 1em 0;
+	word-wrap: break-word;
+}
+/*  ======================
+    5.1 styling blockquote
+    ======================*/
+.quote-owner {
+	text-align: left;
+	margin: 1.3em 1.5em 0 1.5em;
+	word-wrap: break-word;
+}
+
+.quote-owner::before {
+	content: open-quote;
+}
+.quote-owner::after {
+	content: close-quote;
+}
+.owner-name {
+	font-weight: 100;
+	color: #ddd;
+	font-size: 0.65rem;
+}
+/*  ======================
+    5.2 contact us styling
+    ======================
+*/
+
+.contact-us-text {
+	margin-bottom: 1.5em;
+}
+
+/* =====================
+    styling sign up page 
+    ====================*/
+.sign-up--body {
+	background: linear-gradient(45deg, #8b85ff, #4d45ee, #8b85ff);
+}
+
+/*  1.styling of sign up form background*/
+.sign-up-form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--secondary-color);
+	padding-top: calc(50px + 0.5em);
+	height: calc(100vh - 50px - 0.5em);
+}
+.sign-up-form-container {
+	text-align: center;
+	width: 75%;
+	height: 100%;
+	background: var(--secondary-color);
+	border-radius: 2vw;
+}
+
+.sign-up-clip-path-container {
+	clip-path: polygon(
+		10% 0%,
+		90% 0%,
+		100% 10%,
+		100% 90%,
+		90% 100%,
+		10% 100%,
+		0% 90%,
+		0% 10%
+	);
+	background: var(--primary-color);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	flex-direction: column;
+}
+/*  ==========================
+    2.styling of sign-up title
+    ==========================*/
+
+.sign-up-title {
+	font-size: 3.2rem;
+}
+/*  ===================
+    3.styling of inputs
+    ===================*/
+.sign-up-div {
+	margin: 1em auto;
+	display: flex;
+	justify-content: space-between;
+	width: 40vw;
+}
+
+.sign-up-div input {
+	padding-left: 0.5em;
+	border: 2px solid var(--primary-color);
+	border-radius: 15px;
+	height: 5vh;
+	font-family: var(--main-font);
+	font-size: 1.2rem;
+	color: #111;
+	position: relative;
+}
+.sign-up-div input::placeholder {
+	font-family: var(--main-font);
+	font-size: 1.2rem;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.two-input-container input,
+.password-container > * {
+	width: 50%;
+	flex-grow: 1;
+	gap: 1%;
+	flex-wrap: wrap;
+}
+
+.email-container input {
+	width: 100%;
+}
+
+.password-checklist-container {
+	position: relative;
+}
+.password-checklist-container input {
+	width: 100%;
+}
+.password-checklist-container > input:focus-within + .list {
+	display: block;
+}
+.list {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 999;
+	clip-path: polygon(
+		50% 0,
+		63% 15%,
+		100% 15%,
+		100% 100%,
+		0 100%,
+		0 15%,
+		37% 15%
+	);
+	height: max-content;
+	width: 100%;
+	padding: 3em 0.5em 0.5em 0.5em;
+	background-color: white;
+	color: var(--color-red);
+	font-size: 0.8rem;
+	text-align: left;
+	list-style-type: none;
+	display: none;
+	border-radius: 1em;
+}
+
+.sign-up--button-wrapper {
+	position: relative;
+	width: 20%;
+	margin-inline: auto;
+}
+
+.sign-up-button {
+	padding: 0.5em;
+	width: 100%;
+	margin: 2em auto;
+	transition: transform 300ms ease-in-out;
+	cursor: pointer;
+}
+.sign-up-button:hover,
+.sign-up-button:focus {
+	outline: none;
+	transform: scale(1.1);
+	filter: brightness(120%);
+}
+
+.fa-sign-in-alt {
+	font-size: 1.5rem;
+	color: var(--primary-color);
+	position: absolute;
+	top: 50%;
+	left: 1em;
+	transform: translateY(-50%);
+	transition: left 300ms ease-in-out;
+}
+
+.sign-up--button-wrapper:hover .fa-sign-in-alt {
+	left: 0.1em;
+}
+
+/* -------------------
+   styling statstracker page
+   ------------------- */
+
+/* 1. styling of hamburger-menu */
+.hamburger-menu {
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	margin-left: 2em;
+	cursor: pointer;
+}
+.hamburger-menu--icon {
+	position: relative;
+	width: inherit;
+	height: var(--hamburger-height);
+	background-color: var(--secondary-color);
+	transform: rotate(0);
+	transition: transform 400ms ease-out;
+	border-radius: 10vw;
+}
+.hamburger-menu--icon::before,
+.hamburger-menu--icon::after {
+	content: "";
+	position: absolute;
+	width: inherit;
+	height: var(--hamburger-height);
+	background: inherit;
+	transform: rotate(0);
+	opacity: 1;
+	transition: all 400ms ease-out;
+	border-radius: 10vw;
+}
+.hamburger-menu--icon::before {
+	top: -15px;
+}
+
+.hamburger-menu--icon::after {
+	bottom: -15px;
+}
+
+.hamburger-menu.clicked .hamburger-menu--icon {
+	transform: rotate(45deg);
+}
+
+.hamburger-menu.clicked .hamburger-menu--icon::before {
+	top: 0;
+	opacity: 0;
+}
+
+.hamburger-menu.clicked .hamburger-menu--icon::after {
+	bottom: 0;
+	transform: rotate(-90deg);
+}
+
+/* ------------------
+    2. styling of the choose your fifa bar 
+    -------------------*/
+.fifa-bar {
+	width: 100%;
+	height: 5vh;
+	background: #640305;
+	position: fixed;
+	z-index: 500;
+	top: 0;
+	transition: all 300ms ease-out;
+}
+.fifa-bar.show {
+	top: 50px;
+}
+.fifa-bar.show-immediately {
+	top: 50px;
+	transition: none !important;
+}
+
+.fifa-version-form {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	color: var(--secondary-color);
+	font-size: 1.5rem;
+}
+
+input[type="radio"] + label {
+	padding: 0 0.5em;
+}
+
+input[type="radio"]:checked + label,
+input[type="radio"]:hover + label {
+	background: #380102;
+}
+
+/* ------------------
+    3. styling of sidebar 
+    -------------------*/
+.sidebar {
+	height: 100vh;
+	min-width: 82px;
+	padding-inline: 0.5em;
+	padding-top: 50px;
+	width: 15vw;
+	position: fixed;
+	z-index: 700;
+	left: -15vw;
+	top: 0;
+	background: var(--primary-color);
+	color: var(--secondary-color);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	transition: left 300ms ease-out;
+}
+
+.sidebar.show {
+	left: 0;
+}
+.sidebar.show-immediately {
+	left: 0;
+	transition: none !important;
+}
+
+.select-team-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+label[for="team-name"] {
+	font-weight: var(--montserrat-bold);
+	font-size: 1.2rem;
+	margin-bottom: 1em;
+}
+.teams-container {
+	overflow-y: scroll;
+	max-height: 30vh;
+	scrollbar-width: none;
+}
+
+.select-team-form > * {
+	padding: 0 0.5em;
+}
+.select-team-form label {
+	margin-bottom: 1em;
+	display: inline-block;
+	min-width: 50%;
+	width: max-content;
+	max-width: 75%;
+}
+.select-team-form input:checked + label,
+.select-team-form label:hover[for] {
+	background-color: #020341;
+	font-weight: var(--montserrat-bold);
+}
+.select-team-form .remove-team-btn {
+	display: block;
+	border: none;
+	background: transparent;
+	float: right;
+}
+.remove-team-btn .fa-times-circle {
+	color: var(--color-red);
+	cursor: pointer;
+	font-size: 1.1rem;
+}
+
+.sidebar .sidebar--title {
+	font-size: 1.5rem;
+	font-weight: var(--montserrat-bold);
+	display: block;
+	margin-bottom: 0.5em;
+	width: 100% !important;
+}
+.sidebar input[name="team-name"] {
+	width: 90%;
+	border-radius: 10vw;
+	margin-bottom: 1.5em;
+}
+
+.add-team-btn {
+	padding: 0.25em;
+	margin-bottom: 1em;
+	font-size: 1.2rem;
+	width: 90%;
+	transition: var(--btn-transition);
+	font-weight: var(--comfortaa-bold);
+}
+
+/* animate the main content of page depending on if the sidebar is visible  */
+.sidebar.show + main {
+	animation: toLeft 300ms ease-out forwards;
+}
+.sidebar.show-immediately + main {
+	margin-left: 16vw;
+	animation: unset !important;
+}
+:not(.sidebar.show):not(.sidebar.show-immediately) + main {
+	animation: toRight 300ms ease-out forwards;
+}
+@keyframes toLeft {
+	from {
+		margin-left: 0;
+	}
+	to {
+		margin-left: 16vw;
+	}
+}
+@keyframes toRight {
+	from {
+		margin-left: 16vw;
+	}
+	to {
+		margin-left: 0;
+	}
+}
+
+/* ===========================
+  styling of main content statstracker page
+  ========================================= */
+
+/*=============================================
+  styling of hero/ fifa titles section
+  ====================================
+ */
+.hero {
+	position: relative;
+	min-height: 20vh;
+	margin: calc(50px + 5vh + 1em) 0 1em 0;
+	box-shadow: 0px 8px 5px -1px #222;
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+.tacker-title {
+	font-size: 5rem;
+	height: 5rem;
+	line-height: 0.9;
+	margin-left: 0.5em;
+}
+.fifa-title {
+	font-size: 1rem;
+	font-weight: var(--montserrat-normal);
+	font-variant: small-caps;
+	display: block;
+	position: absolute;
+	right: 3vw;
+	width: max-content;
+	text-align: left;
+}
+.tacker-title ~ .fifa-title:nth-of-type(1) {
+	top: 0;
+}
+.fifa-title:nth-of-type(2) {
+	top: 2ch;
+}
+/* ============================
+	styling player display
+ */
+
+.main-player-display,
+.no-player-add {
+	background-color: var(--primary-color);
+	border-radius: 100px;
+	padding: 2em;
+	color: var(--secondary-color);
+}
+.no-player-add ~ .main-player-display {
+	display: none;
+}
+.player-display {
+	max-height: 100vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	width: 100%;
+	padding: 1em;
+	scrollbar-width: thin;
+	scrollbar-color: #64030586 transparent;
+	position: relative;
+}
+.player-display::-webkit-scrollbar-track,
+.player-display::-webkit-scrollbar {
+	background-color: transparent;
+}
+.player-display::-webkit-scrollbar-thumb {
+	background-color: #64030586;
+
+	border-radius: 10vw;
+}
+.position-group {
+	font-size: 3rem;
+	margin-bottom: 1.5em;
+}
+.add-player-btn {
+	padding: 0.5em;
+	font-size: 1rem;
+	font-weight: var(--comfortaa-bold);
+	transition: all 300ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+}
+/* ======================		
+		--styling create player form
+	=========================*/
+.create-form {
+	display: none;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 0.75em;
+	width: 100%;
+}
+.create-form.show {
+	display: grid;
+}
+.create-form.show ~ button {
+	display: none;
+}
+.player-input-titles {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-column: 1/-1;
+}
+.create-form h3::after {
+	content: ":";
+}
+.create-form input {
+	font-size: unset;
+	border-radius: 10vw;
+	padding: 0.25em;
+}
+.show-form-btn {
+	text-decoration: none;
+	padding: 0.5em;
+	font-size: 1.2rem;
+	margin-bottom: 1em;
+	transition: all 300ms ease-in;
+	float: right;
+}
+
+/* =======================
+	styling of the player display 
+	=======================
+*/
+
+.manage-players-form {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1em;
+	margin-bottom: 2em;
+	width: 100%;
+}
+.manage-players-form .btn {
+	padding: 0.5em;
+	font-size: 1.2rem;
+	transition: all 300ms ease-in-out;
+}
+.player-name {
+	grid-column: 1/-1;
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+.manage-players-form input:disabled {
+	background-color: transparent;
+	color: var(--secondary-color);
+	text-indent: 10px;
+	min-width: 3em;
+	font-size: 1.2rem;
+	max-width: 4.5em;
+	-moz-appearance: textfield;
+}
+.manage-players-form input:enabled {
+	border-radius: 10vw;
+	text-align: center;
+	margin-left: 10px;
+	height: 100%;
+	max-width: 4.5em;
+}
+.save-btn {
+	display: none;
+}
+.save-btn.show:hover,
+.save-btn.show:focus,
+.add-player-btn:hover,
+.add-player-btn:focus {
+	background-color: var(--color-green);
+}
+.save-btn.show {
+	display: unset;
+}
+
+.save-btn.show,
+.update-btn,
+.delete-btn {
+	grid-row: 3;
+	width: max-content;
+}
+.delete-btn {
+	grid-column: 2;
+}
+.delete-btn:disabled {
+	filter: grayscale(80%);
+}
+.delete-btn:hover,
+.delete-btn:focus {
+	background-color: var(--color-red);
+}
+.input-container {
+	display: flex;
+	font-size: 1rem;
+	align-items: baseline;
+	background-color: rgba(255, 255, 255, 0.2);
+	padding: 1em;
+	border-radius: 10px;
+	width: max-content;
+}
+.input-container * {
+	display: inline-block;
+}
+.position-title {
+	font-weight: var(--montserrat-normal);
+	width: max-content;
+	background-color: rgba(255, 255, 255, 0.2);
+	padding: 1em;
+	border-radius: 10px;
+}
+.position-title::before {
+	content: "Position: ";
+	font-weight: var(--montserrat-bold);
+}
+.manage-players-form label {
+	font-weight: var(--montserrat-bold);
+	width: max-content;
+}
+
+/* =================
+	styling for tablet viewports 
+	============================
+*/

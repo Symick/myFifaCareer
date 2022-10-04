@@ -1,0 +1,9 @@
+.sidebar {
+	left: 0;
+}
+.fifa-bar {
+	top: 50px;
+}
+.sidebar + main {
+	margin-left: 16vw;
+}
