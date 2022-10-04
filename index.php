@@ -146,7 +146,7 @@
         <div class="about-us-wrapper">
           <h2 class="title">about us</h2>
           <p class="about-us-text">
-            We at MyFIFAcareer are inspired to become the most populair website
+            We at MyFIFAcareer are inspired to become the most popular website
             too track your FIFA careermode and ultimate team playerstats. For
             all the nerds out there wanting to know which player was your club
             topscorer or top assister, MyFIFAcareer is the website to use.
@@ -162,7 +162,7 @@
           <h2 class="title" id="contact-us">contact us</h2>
           <p class="contact-us-text">
             If there are any questions or bugs found, please contact us at this
-            email adress:
+            email address:
           </p>
           <address>MyFIFAcareer@gmail.com</address>
         </div>

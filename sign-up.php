@@ -54,7 +54,7 @@
                 <ul class="list">
                   <li class="list-item" data-check="length">
                     <i class="fa-solid fa-circle-xmark"></i>                      
-                    Password is atleast 8 Characters long
+                    Password is at least 8 Characters long
                   </li>
                   <li class="list-item" data-check="lower"> 
                     <i class="fa-solid fa-circle-xmark"></i>  
