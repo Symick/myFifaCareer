@@ -1158,3 +1158,34 @@ label[for="team-name"] {
 	styling for tablet viewports 
 	============================
 */
+@media (max-width: 1000px) {
+	/* styling nav */
+
+	.left {
+		width: 0;
+	}
+	.nav-menu {
+		width: max-content;
+	}
+
+	/* styling grid index page */
+	.grid-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	/* styling grids statstracker page */
+	.create-form {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.player-input-titles {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.manage-players-form {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.save-btn.show,
+	.update-btn,
+	.delete-btn {
+		grid-row: 4;
+	}
+}
