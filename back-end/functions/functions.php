@@ -134,10 +134,10 @@ function createUser($conn, $name, $username, $email, $password)
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    return 'succes';
+    return 'success';
 }
 
-function emptyInputlogin($username, $password)
+function emptyInputLogin($username, $password)
 {
     if (empty($username) || empty($password)) {
         $error = true;
@@ -177,6 +177,6 @@ function loginUser($conn, $username, $password)
         return $error;
         exit();
     } else {
-        return 'succes';
+        return 'success';
     }
 }

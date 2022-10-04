@@ -11,7 +11,7 @@ session_start();
 require_once 'database/db-handler.php';
 require_once 'functions/functions.php';
 
-if(emptyInputlogin($username, $password) !== false) {
+if(emptyInputLogin($username, $password) !== false) {
     header("location: ../index.php#login");
     $_SESSION['error'] = "fill in all inputs!";
     exit();
@@ -27,7 +27,7 @@ if (loginUser($conn, $username, $password) === "password") {
     exit();
 }
 
-if (loginUser($conn, $username, $password) === "succes") {
+if (loginUser($conn, $username, $password) === "success") {
     header("location: ../statstracker.php");
     exit();
 }

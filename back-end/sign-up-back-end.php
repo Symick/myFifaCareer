@@ -52,22 +52,22 @@
     }
     if (invalidPassword($password) === 'lower') {
         header("location: ../sign-up.php");
-        $_SESSION['error'] = "Your password should contain atleast one lowercase letter!";
+        $_SESSION['error'] = "Your password should contain at least one lowercase letter!";
         exit();  
     }
     if (invalidPassword($password) === 'upper') {
         header("location: ../sign-up.php");
-        $_SESSION['error'] = "Your password should contain atleast one uppercase letter!";
+        $_SESSION['error'] = "Your password should contain at least one uppercase letter!";
         exit();  
     }
     if (invalidPassword($password) === 'number') {
         header("location: ../sign-up.php");
-        $_SESSION['error'] = "Your password should contain atleast one number!";
+        $_SESSION['error'] = "Your password should contain at least one number!";
         exit();  
     }
     if (invalidPassword($password) === 'symbol') {
         header("location: ../sign-up.php");
-        $_SESSION['error'] = "Your password should contain atleast one symbol!";
+        $_SESSION['error'] = "Your password should contain at least one symbol!";
         exit();  
     }
 
@@ -95,8 +95,8 @@
         exit();  
     }
 
-   if (createUser($conn, $name, $username, $email, $password) === 'succes'){
-        $_SESSION['created'] = "Succes! <br> Your account is created!";
+   if (createUser($conn, $name, $username, $email, $password) === 'success'){
+        $_SESSION['created'] = "Success! <br> Your account is created!";
         header("location: ../sign-up.php");
         exit();
    }

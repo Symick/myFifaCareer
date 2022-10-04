@@ -1,5 +1,5 @@
 /*
-  code for about Us intersector, intersector checks if the window is intersecting the about-us page,
+  code for about Us observer, observer checks if the window is intersecting the about-us page,
   if about us is 95 percent of the screen, the nav-style will change. 
 */
 const aboutUs = document.querySelector(".about-us");

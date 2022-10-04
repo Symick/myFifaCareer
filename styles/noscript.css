@@ -1,3 +1,4 @@
+/* make all dropdowns and sidebars visible when the user doesn't have javascript running */
 .sidebar {
 	left: 0;
 }

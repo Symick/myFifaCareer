@@ -17,7 +17,7 @@ function invalidTeamname($teamName)
     }
     return $error;
 }
-function teamNameInDatabase($conn, $userID, $fifaVersion, $teamname) {
+function teamNameInDatabase($conn, $userID, $fifaVersion, $teamName) {
    $sql = 'SELECT * FROM teams WHERE usersID = ? AND fifaVersion = ? AND teamName = ?;';
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -25,7 +25,7 @@ function teamNameInDatabase($conn, $userID, $fifaVersion, $teamname) {
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, 'iss', $userID, $fifaVersion, $teamname);
+    mysqli_stmt_bind_param($stmt, 'iss', $userID, $fifaVersion, $teamName);
     mysqli_stmt_execute($stmt);
 
     $resultQuery = mysqli_stmt_get_result($stmt);
@@ -72,8 +72,8 @@ function getTeamNames($conn, $usersID, $fifaVersion) {
     mysqli_stmt_close($stmt);
 }
 
-function getTeamID($conn, $userID, $fifaVersion, $teamname) {
-    $team = teamNameInDatabase($conn, $userID, $fifaVersion, $teamname);
+function getTeamID($conn, $userID, $fifaVersion, $teamName) {
+    $team = teamNameInDatabase($conn, $userID, $fifaVersion, $teamName);
     return $team['teamID'];
 }
 function deleteTeam($conn, $teamID) {

@@ -139,7 +139,7 @@ p::first-letter,
 .title::first-letter {
 	text-transform: uppercase;
 }
-/* styling indexpage */
+/* styling index page */
 /*  ===========
     1.styling header
     ===========
@@ -1155,7 +1155,7 @@ label[for="team-name"] {
 }
 
 /* =================
-	styling for tablet viewports 
+	styling for tablet viewport 
 	============================
 */
 @media (max-width: 1000px) {
