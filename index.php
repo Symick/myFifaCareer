@@ -112,7 +112,7 @@
               <h3 class="grid-title">step 1:</h3>
               <img src="img/hdiw/step1.png" alt="photo step 1" />
               <p class="grid-text">
-                Create your account using the sign-up buttons found accross our
+                Create your account using the sign-up buttons found across our
                 website
               </p>
             </div>
@@ -149,7 +149,7 @@
             We at MyFIFAcareer are inspired to become the most popular website
             too track your FIFA careermode and ultimate team playerstats. For
             all the nerds out there wanting to know which player was your club
-            topscorer or top assister, MyFIFAcareer is the website to use.
+            top scorer or top assister, MyFIFAcareer is the website to use.
           </p>
           <blockquote class="quote-owner">
             After using excel to track for years being frustrated at how it

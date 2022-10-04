@@ -32,7 +32,7 @@
       </div>
       <nav class="nav-menu">
         <ul>
-          <li><a href="index.php">Back to mainpage</a></li>
+          <li><a href="index.php">Back to homepage</a></li>
         </ul>
       </nav>
     </header>
@@ -58,19 +58,19 @@
                   </li>
                   <li class="list-item" data-check="lower"> 
                     <i class="fa-solid fa-circle-xmark"></i>  
-                    Password contains atleast one lowercase letter
+                    Password contains at least one lowercase letter
                   </li>
                   <li class="list-item" data-check="upper">
                     <i class="fa-solid fa-circle-xmark"></i>
-                    Password contains atleast one uppercase letter
+                    Password contains at least one uppercase letter
                   </li>
                   <li class="list-item" data-check="number">
                     <i class="fa-solid fa-circle-xmark"></i>
-                    Password contains atleast one number
+                    Password contains at least one number
                   </li>
                   <li class="list-item" data-check="symbol">
                     <i class="fa-solid fa-circle-xmark"></i>                     
-                     Password contains atleast one of the following symbols: 
+                     Password contains at least one of the following symbols: 
                      ! @ # $ % ^ &amp; * ? . , + _ -
                   </li>
                 </ul>
