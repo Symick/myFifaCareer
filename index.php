@@ -79,7 +79,6 @@
     </header>
     <main>
       <section class="welcome">
-        <img src="img/stadion-bg.jpg" alt="stadion-background" class="image-background">
         <div class="wrapper">
           <div class="welcome-left">
             <h1 class="welcome-title">Welcome to MyFIFAcareer</h1>

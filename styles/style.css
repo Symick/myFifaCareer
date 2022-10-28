@@ -119,7 +119,7 @@ input:focus {
 
 body {
 	font-family: var(--main-font);
-	background: #8b85ff;
+	background: #d6d6d6;
 	line-height: 1.5;
 	height: 100%;
 }
@@ -324,16 +324,13 @@ p::first-letter,
 
 .welcome {
 	width: 100%;
-	position: relative;
+	background-image: url(../img/stadion-bg.avif);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #8b85ff;
+	background-blend-mode: overlay;
 }
-.image-background {
-	width: 100%;
-	height: 100%;
-	inset: 0;
-	position: absolute;
-	z-index: -1;
-	mix-blend-mode: overlay;
-}
+
 .welcome > .wrapper {
 	display: flex;
 	justify-content: space-between;
@@ -378,15 +375,15 @@ p::first-letter,
 
 */
 .welcome-right {
-	width: 40%;
-	padding: 5em;
+	width: 50%;
+	padding-inline: 5em;
 }
 /*  =================================
     2.2.1 styling of the image slider
     =================================
 */
 .slider {
-	width: 90%;
+	width: 80%;
 	margin: 0 auto;
 	overflow: hidden;
 	border: 10px solid var(--primary-color);
