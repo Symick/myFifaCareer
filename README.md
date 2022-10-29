@@ -35,3 +35,7 @@ if(!$conn) {
     die("failed to connect to the server, sorry for the inconvenience: " . mysqli_connect_error());
 }
 ```
+
+### download the database to phpmyadmin
+
+[get database](sql/myfifacareer.sql)
