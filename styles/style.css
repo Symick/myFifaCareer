@@ -32,7 +32,7 @@ html {
 	scroll-behavior: smooth;
 	height: 100%;
 	scrollbar-width: auto;
-	scrollbar-color: #020341 var(--scrollbar-color);
+	scrollbar-color: var(--scrollbar-color) #000;
 }
 /*  =================
         scrollbar styling
@@ -128,7 +128,7 @@ section {
 	min-height: 100vh;
 }
 .title {
-	font-size: 3.2rem;
+	font-size: 5vw;
 	margin-bottom: 1em;
 }
 .error-display {
@@ -149,7 +149,6 @@ p::first-letter,
 	width: 100%;
 	display: flex;
 	position: fixed;
-	height: 50px;
 	justify-content: space-between;
 	align-items: center;
 	top: 0;
@@ -179,44 +178,43 @@ p::first-letter,
 */
 .nav-menu {
 	width: calc((100% - 250px) / 2);
-	font-size: 25px;
+	font-size: 1.5rem;
+	position: relative;
+	z-index: 999;
 }
 .nav-menu ul {
 	display: flex;
 	justify-content: space-around;
-	flex-direction: row;
 }
-.nav-menu ul li {
+.nav-menu li {
 	list-style: none;
 	text-align: center;
 }
 
-.nav-menu ul li a {
+.nav-menu a {
 	position: relative;
 	color: var(--secondary-color);
 	text-decoration: none;
-	text-align: center;
-	padding: 5px;
 	font-family: var(--header-font);
+	padding-bottom: 0.15em;
 }
 
 .nav-menu a:focus {
 	outline: none;
 }
 
-.nav-menu ul li a:hover::after,
-.nav-menu ul li a:focus::after {
-	font-weight: 700;
+.nav-menu a:hover::after,
+.nav-menu a:focus::after {
 	transform: scaleX(1);
 	transform-origin: left;
 }
 
-.nav-menu ul li a::after {
+.nav-menu a::after {
 	content: "";
 	position: absolute;
 	background: var(--secondary-color);
 	border-radius: 10vw;
-	transition: all 300ms ease-in;
+	transition: transform 300ms ease-in;
 	bottom: 0;
 	left: 0;
 	width: 100%;
@@ -232,12 +230,13 @@ p::first-letter,
 */
 .login {
 	position: relative;
+	z-index: 999;
 }
 
 .login-form {
 	position: absolute;
-	left: -2.5em;
-	top: 0px;
+	left: -100%;
+	top: -10%;
 	font-size: 1em;
 	width: 10em;
 	background-color: var(--primary-color);
@@ -246,8 +245,8 @@ p::first-letter,
 	text-align: left;
 	border-radius: 0 0 10px 10px;
 	visibility: hidden;
-	z-index: 998;
-	transition: all 300ms ease-in-out;
+	/* z-index: 500; */
+	transition: top 300ms ease-in-out, visibility 300ms ease-in-out;
 }
 
 /* make the form visible when interacted by user */
@@ -325,10 +324,10 @@ p::first-letter,
 .welcome {
 	width: 100%;
 	background-image: url(../img/stadion-bg.avif);
-	background-size: cover;
+	object-fit: cover;
 	background-repeat: no-repeat;
 	background-color: #8b85ff;
-	background-blend-mode: overlay;
+	background-blend-mode: multiply;
 }
 
 .welcome > .wrapper {
@@ -344,19 +343,16 @@ p::first-letter,
 	width: 50%;
 	height: 100%;
 	padding: 1em;
-	text-align: center;
 	position: relative;
 }
 .welcome-title {
-	font-size: 4.5rem;
+	font-size: 5vw;
 	font-weight: bold;
 	margin-bottom: 0.5em;
-	text-align: left;
 }
 .welcome-text {
 	font-size: 2.5em;
 	margin-bottom: 1.5em;
-	text-align: left;
 }
 /*  =====================================
     2.1.2 styling of link to sign-up page
@@ -388,7 +384,7 @@ p::first-letter,
 	overflow: hidden;
 	border: 10px solid var(--primary-color);
 	border-radius: 10px;
-	background-color: var(--primary-color);
+	background-image: linear-gradient();
 }
 .slider figure {
 	position: relative;
@@ -1158,12 +1154,17 @@ label[for="team-name"] {
 */
 @media (max-width: 1000px) {
 	/* styling nav */
-
+	.header {
+		justify-content: space-around;
+	}
 	.left {
-		width: 0;
+		display: none;
+	}
+	.logo {
+		width: 25vw;
 	}
 	.nav-menu {
-		width: max-content;
+		width: 60vw;
 	}
 
 	/* styling grid index page */
