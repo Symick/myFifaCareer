@@ -93,17 +93,17 @@ input[type="radio"] + label::after {
 }
 
 .btn {
-	padding: 1em 0.5em;
 	border: none;
 	background-color: var(--secondary-color);
-	border-radius: 10vw;
+	border-radius: 15px;
 	font-family: var(--btn-font);
 	font-weight: var(--confortaa-normal);
 	color: var(--primary-color);
-	font-size: 2rem;
+	font-size: 1.5rem;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
 	transform: scale(1);
 	cursor: pointer;
+	text-align: center;
 }
 .btn:hover,
 .btn:focus {
@@ -121,14 +121,15 @@ body {
 	font-family: var(--main-font);
 	background: #d6d6d6;
 	line-height: 1.5;
-	height: 100%;
+	min-height: 100%;
+	max-width: 100vw;
 }
 section {
 	width: 100%;
 	min-height: 100vh;
 }
 .title {
-	font-size: 5vw;
+	font-size: clamp(1.5rem, 5vw, 2.5rem);
 	margin-bottom: 1em;
 }
 .error-display {
@@ -146,11 +147,12 @@ p::first-letter,
 */
 .header {
 	background-color: var(--primary-color);
+	height: 50px;
 	width: 100%;
 	display: flex;
-	position: fixed;
 	justify-content: space-between;
 	align-items: center;
+	position: fixed;
 	top: 0;
 	z-index: 999;
 	box-shadow: 0 0 0.5em 0.25em #111;
@@ -179,8 +181,6 @@ p::first-letter,
 .nav-menu {
 	width: calc((100% - 250px) / 2);
 	font-size: 1.5rem;
-	position: relative;
-	z-index: 999;
 }
 .nav-menu ul {
 	display: flex;
@@ -245,7 +245,6 @@ p::first-letter,
 	text-align: left;
 	border-radius: 0 0 10px 10px;
 	visibility: hidden;
-	/* z-index: 500; */
 	transition: top 300ms ease-in-out, visibility 300ms ease-in-out;
 }
 
@@ -259,7 +258,7 @@ p::first-letter,
 }
 
 .login-form input {
-	margin: 1em 0;
+	margin: 1em auto;
 	border-radius: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	background: #f2f2f2;
@@ -275,7 +274,7 @@ p::first-letter,
 .fa-eye,
 .fa-eye-slash {
 	position: absolute;
-	right: 10%;
+	right: 7%;
 	top: 50%;
 	transform: translateY(-50%);
 	color: #100000;
@@ -292,6 +291,61 @@ p::first-letter,
 .login-btn:hover,
 .login-btn:focus {
 	opacity: 0.9;
+}
+/* 1.1.2 styling of hamburger-menu */
+.hamburger-menu {
+	width: 45px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	margin-left: 2em;
+	cursor: pointer;
+}
+.hamburger-menu--icon {
+	position: relative;
+	width: inherit;
+	height: var(--hamburger-height);
+	background-color: var(--secondary-color);
+	transform: rotate(0);
+	transition: transform 400ms ease-out;
+	border-radius: 10vw;
+}
+.hamburger-menu--icon::before,
+.hamburger-menu--icon::after {
+	content: "";
+	position: absolute;
+	width: inherit;
+	height: var(--hamburger-height);
+	background: inherit;
+	transform: rotate(0);
+	opacity: 1;
+	transition: all 400ms ease-out;
+	border-radius: 10vw;
+}
+.hamburger-menu--icon::before {
+	top: -15px;
+}
+
+.hamburger-menu--icon::after {
+	bottom: -15px;
+}
+
+.hamburger-menu.clicked .hamburger-menu--icon {
+	transform: rotate(45deg);
+}
+
+.hamburger-menu.clicked .hamburger-menu--icon::before {
+	top: 0;
+	opacity: 0;
+}
+
+.hamburger-menu.clicked .hamburger-menu--icon::after {
+	bottom: 0;
+	transform: rotate(-90deg);
+}
+
+.header > .hamburger-menu {
+	display: none;
 }
 
 /*  =======================================
@@ -324,7 +378,7 @@ p::first-letter,
 .welcome {
 	width: 100%;
 	background-image: url(../img/stadion-bg.avif);
-	object-fit: cover;
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-color: #8b85ff;
 	background-blend-mode: multiply;
@@ -340,19 +394,24 @@ p::first-letter,
     2.1.1 styling left side of welcome section
 */
 .welcome-left {
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
 	width: 50%;
 	height: 100%;
 	padding: 1em;
 	position: relative;
 }
 .welcome-title {
-	font-size: 5vw;
-	font-weight: bold;
+	font-size: clamp(2rem, 5vw, 4rem);
+	font-weight: var(--montserrat-bold);
 	margin-bottom: 0.5em;
+	color: var(--secondary-color);
 }
 .welcome-text {
-	font-size: 2.5em;
+	font-size: 1.5rem;
 	margin-bottom: 1.5em;
+	color: #fff;
 }
 /*  =====================================
     2.1.2 styling of link to sign-up page
@@ -363,6 +422,9 @@ p::first-letter,
 	color: var(--secondary-color);
 	background: var(--primary-color);
 	transition: var(--btn-transition);
+	width: max-content;
+	text-align: center;
+	padding: 1em;
 }
 
 /*  ===================================================
@@ -371,20 +433,23 @@ p::first-letter,
 
 */
 .welcome-right {
-	width: 50%;
-	padding-inline: 5em;
+	width: 45%;
+	background-image: linear-gradient(45deg, var(--primary-color), #8b85ff);
+	padding: 10px;
+	border-radius: 15px;
+	margin-right: 2em;
+	margin-bottom: 2em;
 }
 /*  =================================
     2.2.1 styling of the image slider
     =================================
 */
 .slider {
-	width: 80%;
+	width: 100%;
 	margin: 0 auto;
 	overflow: hidden;
-	border: 10px solid var(--primary-color);
 	border-radius: 10px;
-	background-image: linear-gradient();
+	position: relative;
 }
 .slider figure {
 	position: relative;
@@ -392,7 +457,6 @@ p::first-letter,
 	margin: 0;
 	left: 0;
 	animation: 25s slider infinite;
-	border: none;
 }
 .slider figure img {
 	width: calc(100% / 7);
@@ -403,50 +467,6 @@ p::first-letter,
 100/8 =12.5 and 100/7 - 12.5 = 1.8 means the interval percentage is 1.8% to make an even
 transition between to pictures. 
 */
-@keyframes slider {
-	0% {
-		left: 0;
-	}
-	12.5% {
-		left: 0;
-	}
-	14.3% {
-		left: -100%;
-	}
-	26.6% {
-		left: -100%;
-	}
-	28.4% {
-		left: -200%;
-	}
-	40.9% {
-		left: -200%;
-	}
-	42.7% {
-		left: -300%;
-	}
-	55.2% {
-		left: -300%;
-	}
-	57% {
-		left: -400%;
-	}
-	69.5% {
-		left: -400%;
-	}
-	71.3% {
-		left: -500%;
-	}
-	83.8% {
-		left: -500%;
-	}
-	85.6% {
-		left: -600%;
-	}
-	100% {
-		left: -600%;
-	}
-}
 
 /*  ==================================
    3.styling how does it work section
@@ -723,58 +743,6 @@ transition between to pictures.
    styling statstracker page
    ------------------- */
 
-/* 1. styling of hamburger-menu */
-.hamburger-menu {
-	width: 50px;
-	height: 50px;
-	display: flex;
-	align-items: center;
-	margin-left: 2em;
-	cursor: pointer;
-}
-.hamburger-menu--icon {
-	position: relative;
-	width: inherit;
-	height: var(--hamburger-height);
-	background-color: var(--secondary-color);
-	transform: rotate(0);
-	transition: transform 400ms ease-out;
-	border-radius: 10vw;
-}
-.hamburger-menu--icon::before,
-.hamburger-menu--icon::after {
-	content: "";
-	position: absolute;
-	width: inherit;
-	height: var(--hamburger-height);
-	background: inherit;
-	transform: rotate(0);
-	opacity: 1;
-	transition: all 400ms ease-out;
-	border-radius: 10vw;
-}
-.hamburger-menu--icon::before {
-	top: -15px;
-}
-
-.hamburger-menu--icon::after {
-	bottom: -15px;
-}
-
-.hamburger-menu.clicked .hamburger-menu--icon {
-	transform: rotate(45deg);
-}
-
-.hamburger-menu.clicked .hamburger-menu--icon::before {
-	top: 0;
-	opacity: 0;
-}
-
-.hamburger-menu.clicked .hamburger-menu--icon::after {
-	bottom: 0;
-	transform: rotate(-90deg);
-}
-
 /* ------------------
     2. styling of the choose your fifa bar 
     -------------------*/
@@ -917,22 +885,6 @@ label[for="team-name"] {
 :not(.sidebar.show):not(.sidebar.show-immediately) + main {
 	animation: toRight 300ms ease-out forwards;
 }
-@keyframes toLeft {
-	from {
-		margin-left: 0;
-	}
-	to {
-		margin-left: 16vw;
-	}
-}
-@keyframes toRight {
-	from {
-		margin-left: 16vw;
-	}
-	to {
-		margin-left: 0;
-	}
-}
 
 /* ===========================
   styling of main content statstracker page
@@ -946,7 +898,7 @@ label[for="team-name"] {
 	position: relative;
 	min-height: 20vh;
 	margin: calc(50px + 5vh + 1em) 0 1em 0;
-	box-shadow: 0px 8px 5px -1px #222;
+	box-shadow: -1px 8px 5px -1px #222;
 	display: flex;
 	align-items: center;
 	width: 100%;
@@ -1082,7 +1034,6 @@ label[for="team-name"] {
 	min-width: 3em;
 	font-size: 1.2rem;
 	max-width: 4.5em;
-	-moz-appearance: textfield;
 }
 .manage-players-form input:enabled {
 	border-radius: 10vw;
@@ -1186,5 +1137,159 @@ label[for="team-name"] {
 	.update-btn,
 	.delete-btn {
 		grid-row: 4;
+	}
+}
+@media screen and (max-width: 764px) {
+	/* ------------------ 
+	*  index page styling
+	-----------------------*/
+	/* nav styling */
+	.header > .hamburger-menu {
+		display: flex;
+		margin-right: 0.25em;
+	}
+	.nav-menu ul {
+		flex-direction: column;
+		position: absolute;
+		right: 0;
+		top: 50px;
+		padding-inline: 0.5rem;
+		width: 100vw;
+		align-items: flex-end;
+		background-color: var(--Complementary-color);
+		transform: translateY(-150%);
+		transform-origin: right;
+		transition: transform 500ms ease;
+	}
+	.nav-menu.show ul {
+		transform: translateY(0%);
+	}
+	.nav-menu li {
+		border-bottom: 1px solid #666;
+		width: 100%;
+		text-align: end;
+	}
+	.nav-menu li:last-child {
+		border-bottom: none;
+	}
+	.login {
+		position: static;
+	}
+	.login-form {
+		transition: background-color 200ms ease-out;
+	}
+	.login:target .login-form,
+	.login:focus-within .login-form,
+	.login:hover .login-form {
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		transition: background-color 200ms ease-out;
+		animation: visible 500ms ease forwards;
+		width: 100vw;
+	}
+	.login-btn {
+		width: fit-content;
+		padding-inline: 1.5rem;
+	}
+	.login-form label {
+		width: 90%;
+		margin: auto;
+	}
+
+	/* welcome section styling */
+	.welcome-right {
+		display: none;
+	}
+	.welcome-left {
+		width: 100%;
+		align-items: center;
+		text-align: center;
+	}
+	.welcome-title {
+		font-size: clamp(2rem, 10vw, 4rem);
+	}
+	.welcome-text {
+		font-size: clamp(1rem, 5vw, 1.5rem);
+	}
+}
+@media screen and (max-width: 500px) {
+	.grid-container {
+		grid-template-columns: 1fr;
+	}
+	.clip-path-container {
+		clip-path: none;
+	}
+}
+
+/* animations */
+@keyframes slider {
+	0% {
+		left: 0;
+	}
+	12.5% {
+		left: 0;
+	}
+	14.3% {
+		left: -100%;
+	}
+	26.6% {
+		left: -100%;
+	}
+	28.4% {
+		left: -200%;
+	}
+	40.9% {
+		left: -200%;
+	}
+	42.7% {
+		left: -300%;
+	}
+	55.2% {
+		left: -300%;
+	}
+	57% {
+		left: -400%;
+	}
+	69.5% {
+		left: -400%;
+	}
+	71.3% {
+		left: -500%;
+	}
+	83.8% {
+		left: -500%;
+	}
+	85.6% {
+		left: -600%;
+	}
+	100% {
+		left: -600%;
+	}
+}
+
+@keyframes toLeft {
+	from {
+		margin-left: 0;
+	}
+	to {
+		margin-left: 16vw;
+	}
+}
+@keyframes toRight {
+	from {
+		margin-left: 16vw;
+	}
+	to {
+		margin-left: 0;
+	}
+}
+
+@keyframes visible {
+	from {
+		visibility: hidden;
+	}
+	to {
+		visibility: visible;
 	}
 }

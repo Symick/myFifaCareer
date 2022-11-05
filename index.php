@@ -28,6 +28,7 @@
     <script src="scripts/show-password.js" defer></script>
     <script src="scripts/about-us-intersector.js" defer></script>
     <script src="scripts/logo-spinner.js" defer></script>
+    <script src="scripts/hamburgerMenu.js" defer></script>
     <title>My Fifa Career</title>
   </head>
   <body>
@@ -76,6 +77,9 @@
           <li><a href="#contact-us">contact</a></li>
         </ul>
       </nav>
+      <div class="hamburger-menu">
+        <span class="hamburger-menu--icon"></span>
+      </div>
     </header>
     <main>
       <section class="welcome">
@@ -151,7 +155,7 @@
             top scorer or top assister, MyFIFAcareer is the website to use.
           </p>
           <blockquote class="quote-owner">
-            After using excel to track for years being frustrated at how it
+            After using excel to track my statstracker for years being frustrated at how it
             looked, I decided to take matter into my own hands and created
             MyFIFAcareer. Now im still using MyFIFAcareer for my stats tracking.
           </blockquote>
