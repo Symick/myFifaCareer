@@ -64,7 +64,12 @@ if(isset($_SESSION['teamName'])) {
       </div>
       <nav class="nav-menu">
         <ul>
-          <li><a href="#" id="chooseYourFifa">Choose your FIFA</a></li>
+          <li>
+            <a href="#" id="chooseYourFifa">
+                <span class="nav-link-text">Choose your FIFA</span>
+                <i class="fa-solid fa-caret-down"></i>
+            </a>
+          </li>
           <li> 
             <a href="back-end/logout.php"> <i class="fas fa-sign-out-alt"></i> Logout!</a>
           </li>
@@ -120,6 +125,13 @@ if(isset($_SESSION['teamName'])) {
                 }
             } ?>> 
             <label for="fifa22"> fifa 22</label>
+            <input type="radio" name="fifa" id="fifa23" value="fifa 23" onchange="this.form.submit();"
+            <?php if (isset($currentFifaVersion)) {
+                if ($currentFifaVersion == 'fifa 23') {
+                    echo 'checked="checked"';
+                }
+            } ?>> 
+            <label for="fifa23"> fifa 23</label>
         </form>
     </div>
     <aside class="sidebar">
