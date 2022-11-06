@@ -16,12 +16,10 @@
     <script src="https://kit.fontawesome.com/045f11e82e.js" crossorigin="anonymous"></script>
     
     <script src="scripts/logo-spinner.js" defer></script>
-    <script src="scripts/password-check.js" defer></script>i
-
-
+    <script src="scripts/password-check.js" defer></script>
     <title>Sign-up</title>
   </head>
-  <body class="sign-up--body">
+  <body class="sign-up-body">
     <header class="header">
       <!-- div left is made to make sure logo stays in the middle with flexbox -->
       <div class="left"></div>
@@ -30,9 +28,13 @@
           ><img src="img/logo.png" alt="Logo MyFIFAcareer"
         /></a>
       </div>
-      <nav class="nav-menu">
+      <nav class="nav-menu" data-nav-page="sign-up">
         <ul>
-          <li><a href="index.php">Back to homepage</a></li>
+          <li>
+            <a href="index.php"> 
+              <i class="fa-solid fa-house"></i><span class="home-link-text">Home</span>
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -76,14 +78,11 @@
                 </ul>
                </div>
                <input type="password" name="repeat-password" placeholder="Repeat your Password ..." required>
-            </div>
-                                                                                                                                 
-            <div class="sign-up--button-wrapper">
-              <button type="submit" name="sign-up-submit" class="btn sign-up-button">
-                Sign-up!
-              </button>
+            </div>                                                                                                            
+            <button type="submit" name="sign-up-submit" class="btn sign-up-button">
               <i class="fas fa-sign-in-alt"></i>
-            </div>
+              Sign-up!
+            </button>
             <div class="error-display"> 
               <?php
               if (isset($_SESSION['error'])) { 

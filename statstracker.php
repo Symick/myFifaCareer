@@ -52,7 +52,7 @@ if(isset($_SESSION['teamName'])) {
   <body>
     <header class="header">
       <!-- div left is made to make sure logo stays in the middle with flexbox -->
-      <div class="left">
+      <div class="left" data-always-visible="true">
           <div class="hamburger-menu">
             <span class="hamburger-menu--icon"></span>
           </div>
@@ -62,7 +62,7 @@ if(isset($_SESSION['teamName'])) {
             <img src="img/logo.png" alt="Logo MyFIFAcareer"/>
         </a>
       </div>
-      <nav class="nav-menu">
+      <nav class="nav-menu" data-nav-page="statstracker">
         <ul>
           <li>
             <a href="#" id="chooseYourFifa">

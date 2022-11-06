@@ -40,7 +40,7 @@
           ><img src="img/logo.png" alt="Logo MyFIFAcareer"
         /></a>
       </div>
-      <nav class="nav-menu">
+      <nav class="nav-menu" data-nav-page="index">
         <ul>
           <li><a href="#about-us">about us</a></li>
           <li><a href="./sign-up.php">sign-up</a></li>

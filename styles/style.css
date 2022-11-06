@@ -135,6 +135,7 @@ section {
 .error-display {
 	font-weight: 700;
 	font-size: 1.5rem;
+	color: var(--color-red);
 }
 p::first-letter,
 .title::first-letter {
@@ -184,7 +185,14 @@ p::first-letter,
 }
 .nav-menu ul {
 	display: flex;
+	justify-content: flex-end;
+	gap: 1em;
+	padding-right: 1em;
+}
+.nav-menu[data-nav-page="index"] ul {
 	justify-content: space-around;
+	gap: initial;
+	padding-right: initial;
 }
 .nav-menu li {
 	list-style: none;
@@ -585,8 +593,14 @@ transition between to pictures.
 /* =====================
     styling sign up page 
     ====================*/
-.sign-up--body {
+.sign-up-body {
 	background: linear-gradient(45deg, #8b85ff, #4d45ee, #8b85ff);
+	height: 100vh;
+	overflow-y: hidden;
+}
+.fa-house {
+	display: inline-block;
+	margin-right: 0.5em;
 }
 
 /*  1.styling of sign up form background*/
@@ -595,13 +609,12 @@ transition between to pictures.
 	align-items: center;
 	justify-content: center;
 	color: var(--secondary-color);
-	padding-top: calc(50px + 0.5em);
-	height: calc(100vh - 50px - 0.5em);
+	min-height: calc(100vh + 50px);
 }
 .sign-up-form-container {
 	text-align: center;
+	min-height: 80vh;
 	width: 75%;
-	height: 100%;
 	background: var(--secondary-color);
 	border-radius: 2vw;
 }
@@ -619,7 +632,7 @@ transition between to pictures.
 	);
 	background: var(--primary-color);
 	width: 100%;
-	height: 100%;
+	min-height: 80vh;
 	display: flex;
 	justify-content: space-evenly;
 	flex-direction: column;
@@ -638,14 +651,13 @@ transition between to pictures.
 	margin: 1em auto;
 	display: flex;
 	justify-content: space-between;
-	width: 40vw;
+	width: 90%;
 }
 
 .sign-up-div input {
-	padding-left: 0.5em;
 	border: 2px solid var(--primary-color);
-	border-radius: 15px;
-	height: 5vh;
+	border-radius: 10px;
+	height: 5ch;
 	font-family: var(--main-font);
 	font-size: 1.2rem;
 	color: #111;
@@ -660,10 +672,7 @@ transition between to pictures.
 }
 .two-input-container input,
 .password-container > * {
-	width: 50%;
-	flex-grow: 1;
-	gap: 1%;
-	flex-wrap: wrap;
+	width: calc(50% - 5px);
 }
 
 .email-container input {
@@ -705,18 +714,13 @@ transition between to pictures.
 	border-radius: 1em;
 }
 
-.sign-up--button-wrapper {
-	position: relative;
-	width: 20%;
-	margin-inline: auto;
-}
-
 .sign-up-button {
 	padding: 0.5em;
-	width: 100%;
 	margin: 2em auto;
 	transition: transform 300ms ease-in-out;
 	cursor: pointer;
+	min-width: fit-content;
+	width: 20%;
 }
 .sign-up-button:hover,
 .sign-up-button:focus {
@@ -728,15 +732,6 @@ transition between to pictures.
 .fa-sign-in-alt {
 	font-size: 1.5rem;
 	color: var(--primary-color);
-	position: absolute;
-	top: 50%;
-	left: 1em;
-	transform: translateY(-50%);
-	transition: left 300ms ease-in-out;
-}
-
-.sign-up--button-wrapper:hover .fa-sign-in-alt {
-	left: 0.1em;
 }
 
 /* -------------------
@@ -882,7 +877,7 @@ label[for="team-name"] {
 	margin-left: 16vw;
 	animation: unset !important;
 }
-:not(.sidebar.show):not(.sidebar.show-immediately) + main {
+.sidebar:not(.show):not(.show-immediately) + main {
 	animation: toRight 300ms ease-out forwards;
 }
 
@@ -1108,14 +1103,20 @@ label[for="team-name"] {
 	.header {
 		justify-content: space-around;
 	}
-	.left {
+	.left:not([data-always-visible="true"]) {
 		display: none;
+	}
+	.left {
+		width: 50px;
 	}
 	.logo {
 		width: 25vw;
 	}
 	.nav-menu {
 		width: 60vw;
+	}
+	.nav-menu ul {
+		padding-right: 0;
 	}
 
 	/* styling grid index page */
@@ -1139,7 +1140,7 @@ label[for="team-name"] {
 		grid-row: 4;
 	}
 }
-@media screen and (max-width: 764px) {
+@media screen and (max-width: 768px) {
 	/* ------------------ 
 	*  index page styling
 	-----------------------*/
@@ -1148,7 +1149,7 @@ label[for="team-name"] {
 		display: flex;
 		margin-right: 0.25em;
 	}
-	.nav-menu ul {
+	.nav-menu[data-nav-page="index"] ul {
 		flex-direction: column;
 		position: absolute;
 		right: 0;
@@ -1161,15 +1162,15 @@ label[for="team-name"] {
 		transform-origin: right;
 		transition: transform 500ms ease;
 	}
-	.nav-menu.show ul {
+	.nav-menu[data-nav-page="index"].show ul {
 		transform: translateY(0%);
 	}
-	.nav-menu li {
+	.nav-menu[data-nav-page="index"] li {
 		border-bottom: 1px solid #666;
 		width: 100%;
 		text-align: end;
 	}
-	.nav-menu li:last-child {
+	.nav-menu[data-nav-page="index"] li:last-child {
 		border-bottom: none;
 	}
 	.login {
@@ -1212,6 +1213,34 @@ label[for="team-name"] {
 	.welcome-text {
 		font-size: clamp(1rem, 5vw, 1.5rem);
 	}
+	/* --------------------
+	   Sign up page
+	   --------------------
+	*/
+	/* unset body height */
+	.sign-up-body {
+		height: unset;
+		overflow-y: hidden;
+		min-height: unset;
+	}
+
+	.sign-up-form {
+		margin-top: 65px;
+		min-height: calc(100vh - 64px);
+	}
+	.sign-up-form-container {
+		width: 90%;
+	}
+
+	.sign-up-div {
+		flex-direction: column;
+		margin: 0.5em auto;
+	}
+	.two-input-container input,
+	.password-container > * {
+		width: 100%;
+		margin: 0.5em 0;
+	}
 }
 @media screen and (max-width: 500px) {
 	.grid-container {
@@ -1219,6 +1248,10 @@ label[for="team-name"] {
 	}
 	.clip-path-container {
 		clip-path: none;
+	}
+	/* sign up */
+	.home-link-text {
+		display: none;
 	}
 }
 
