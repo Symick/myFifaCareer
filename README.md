@@ -8,7 +8,7 @@ source code myFifaCareer
 git clone https://github.com/Symick/myFifaCareer.git
 cd myFifaCareer
 ```
-## This project makes use of composer
+## download dependencies with composer
 ``` bash
 php composer.phar install
 ``` 
