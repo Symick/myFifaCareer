@@ -135,6 +135,7 @@ section {
 .error-display {
 	font-weight: 700;
 	font-size: 1.5rem;
+	color: var(--color-red);
 }
 p::first-letter,
 .title::first-letter {
@@ -184,7 +185,14 @@ p::first-letter,
 }
 .nav-menu ul {
 	display: flex;
+	justify-content: flex-end;
+	gap: 1em;
+	padding-right: 1em;
+}
+.nav-menu[data-nav-page="index"] ul {
 	justify-content: space-around;
+	gap: initial;
+	padding-right: initial;
 }
 .nav-menu li {
 	list-style: none;
@@ -1108,8 +1116,11 @@ label[for="team-name"] {
 	.header {
 		justify-content: space-around;
 	}
-	.left {
+	.left:not([data-always-visible="true"]) {
 		display: none;
+	}
+	.left {
+		width: 50px;
 	}
 	.logo {
 		width: 25vw;
@@ -1148,7 +1159,7 @@ label[for="team-name"] {
 		display: flex;
 		margin-right: 0.25em;
 	}
-	.nav-menu ul {
+	.nav-menu[data-nav-page="index"] ul {
 		flex-direction: column;
 		position: absolute;
 		right: 0;
@@ -1161,15 +1172,15 @@ label[for="team-name"] {
 		transform-origin: right;
 		transition: transform 500ms ease;
 	}
-	.nav-menu.show ul {
+	.nav-menu[data-nav-page="index"].show ul {
 		transform: translateY(0%);
 	}
-	.nav-menu li {
+	.nav-menu[data-nav-page="index"] li {
 		border-bottom: 1px solid #666;
 		width: 100%;
 		text-align: end;
 	}
-	.nav-menu li:last-child {
+	.nav-menu[data-nav-page="index"] li:last-child {
 		border-bottom: none;
 	}
 	.login {

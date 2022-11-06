@@ -17,8 +17,6 @@
     
     <script src="scripts/logo-spinner.js" defer></script>
     <script src="scripts/password-check.js" defer></script>i
-
-
     <title>Sign-up</title>
   </head>
   <body class="sign-up--body">
@@ -30,7 +28,7 @@
           ><img src="img/logo.png" alt="Logo MyFIFAcareer"
         /></a>
       </div>
-      <nav class="nav-menu">
+      <nav class="nav-menu" data-nav-page="sign-up">
         <ul>
           <li><a href="index.php">Back to homepage</a></li>
         </ul>
