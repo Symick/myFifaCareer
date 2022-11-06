@@ -4,38 +4,28 @@ source code myFifaCareer
 
 ## This was a hobby project with minimal skills and knowledge
 
-```bash
-    git clone https://github.com/Symick/myFifaCareer.git
-    cd myFifaCareer
+``` bash
+git clone https://github.com/Symick/myFifaCareer.git
+cd myFifaCareer
 ```
+## This project makes use of composer
+``` bash
+php composer.phar install
+``` 
 
 ## before beginning with the source code you need to add a connection to the database
 
-### create directory database and add db-handler file
+### add enviroment variables
 
-```bash
-    cd back-end
-    mkdir database
-    cd database
-    echo > db-handler.php
+[.env.example](.env.example)
+
+#### example when using xammp
 ```
-
-### add php script to handle connection
-
-```php
-    <?php
-$servername = 'example'; //name of the server you are using
-$dbUsername = 'exampleUsername'; // username of your the account your running the database on
-$dbPassword = "examplePassword"; // password of the account your running the database on
-$dbName = "myfifacareer";
-
-$conn = mysqli_connect($servername, $dbUsername, $dbPassword, $dbName);
-
-if(!$conn) {
-    die("failed to connect to the server, sorry for the inconvenience: " . mysqli_connect_error());
-}
+SERVERNAME = "localhost"
+DB_USERNAME = "root"
+DB_PASSWORD = ""
+DB_NAME = "myfifacareer"
 ```
-
 ### download the database to phpmyadmin
 
 [get database](sql/myfifacareer.sql)
