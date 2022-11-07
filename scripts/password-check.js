@@ -1,5 +1,4 @@
 const input = document.getElementById("password");
-const listItems = document.querySelectorAll("[data-check]");
 input.addEventListener("input", () => {
 	const value = input.value;
 	const Object = checkRequirements(value);

@@ -17,6 +17,7 @@
     
     <script src="scripts/logo-spinner.js" defer></script>
     <script src="scripts/password-check.js" defer></script>
+    <script src="scripts/show-password.js" defer></script>
     <title>Sign-up</title>
   </head>
   <body class="sign-up-body">
@@ -53,6 +54,7 @@
             <div class="sign-up-div password-container">
               <div class="password-checklist-container">
                 <input type="password" name="password" placeholder="Password..." required id="password">
+                <i class="far fa-eye" data-eye></i>
                 <ul class="list">
                   <li class="list-item" data-check="length">
                     <i class="fa-solid fa-circle-xmark"></i>                      
@@ -73,11 +75,14 @@
                   <li class="list-item" data-check="symbol">
                     <i class="fa-solid fa-circle-xmark"></i>                     
                      Password contains at least one of the following symbols: 
-                     ! @ # $ % ^ &amp; * ? . , + _ -
+                     <br> &emsp; ! @ # $ % ^ &amp; * ? . , + _ -
                   </li>
                 </ul>
                </div>
-               <input type="password" name="repeat-password" placeholder="Repeat your Password ..." required>
+               <div class="password-container">
+                 <input type="password" name="repeat-password" placeholder="Repeat your Password ..." required>
+                 <i class="far fa-eye" data-eye></i>
+               </div>
             </div>                                                                                                            
             <button type="submit" name="sign-up-submit" class="btn sign-up-button">
               <i class="fas fa-sign-in-alt"></i>
