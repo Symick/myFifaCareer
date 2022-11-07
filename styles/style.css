@@ -699,7 +699,7 @@ transition between to pictures.
 }
 .list {
 	position: absolute;
-	top: calc(10ch);
+	top: 100%;
 	left: 0;
 	z-index: 999;
 	clip-path: polygon(
@@ -713,7 +713,7 @@ transition between to pictures.
 	);
 	height: max-content;
 	width: 100%;
-	padding: 3em 0.5em 0.5em 0.5em;
+	padding: 4ch 0.5em 0.5em 0.5em;
 	background-color: white;
 	color: var(--color-red);
 	font-size: 0.8rem;

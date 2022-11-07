@@ -75,7 +75,7 @@
                   <li class="list-item" data-check="symbol">
                     <i class="fa-solid fa-circle-xmark"></i>                     
                      Password contains at least one of the following symbols: 
-                     ! @ # $ % ^ &amp; * ? . , + _ -
+                     <br> &emsp; ! @ # $ % ^ &amp; * ? . , + _ -
                   </li>
                 </ul>
                </div>
