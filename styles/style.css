@@ -1057,12 +1057,13 @@ label[for="team-name"] {
 	padding: 0.25em;
 }
 .show-form-btn {
+	position: relative;
+	left: calc(100% - 15ch);
 	text-decoration: none;
 	padding: 0.5em;
 	font-size: 1.2rem;
-	margin-bottom: 1em;
+	margin-bottom: 2em;
 	transition: all 300ms ease-in;
-	float: right;
 }
 
 /* =======================
@@ -1072,10 +1073,15 @@ label[for="team-name"] {
 
 .manage-players-form {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas:
+		"name     .      .     ."
+		"position games  goals assists"
+		"update   delete .     .";
 	gap: 1em;
 	margin-bottom: 2em;
-	width: 100%;
+}
+.update-btn {
+	grid-area: update;
 }
 .manage-players-form .btn {
 	padding: 0.5em;
@@ -1083,7 +1089,7 @@ label[for="team-name"] {
 	transition: all 300ms ease-in-out;
 }
 .player-name {
-	grid-column: 1/-1;
+	grid-area: name;
 	font-size: 2rem;
 	text-transform: uppercase;
 }
@@ -1091,19 +1097,19 @@ label[for="team-name"] {
 	background-color: transparent;
 	color: var(--secondary-color);
 	text-indent: 10px;
-	min-width: 3em;
 	font-size: 1.2rem;
-	max-width: 4.5em;
+	width: 6ch;
 }
 .manage-players-form input:enabled {
 	border-radius: 10vw;
 	text-align: center;
 	margin-left: 10px;
 	height: 100%;
-	max-width: 4.5em;
+	width: 6ch;
 }
 .save-btn {
 	display: none;
+	grid-area: update;
 }
 .save-btn.show:hover,
 .save-btn.show:focus,
@@ -1115,14 +1121,8 @@ label[for="team-name"] {
 	display: unset;
 }
 
-.save-btn.show,
-.update-btn,
 .delete-btn {
-	grid-row: 3;
-	width: max-content;
-}
-.delete-btn {
-	grid-column: 2;
+	grid-area: delete;
 }
 .delete-btn:disabled {
 	filter: grayscale(80%);
@@ -1138,14 +1138,24 @@ label[for="team-name"] {
 	background-color: rgba(255, 255, 255, 0.2);
 	padding: 1em;
 	border-radius: 10px;
-	width: max-content;
 }
 .input-container * {
 	display: inline-block;
 }
+/* setup grid areas for input containers */
+.input-container:nth-of-type(1) {
+	grid-area: games;
+}
+.input-container:nth-of-type(2) {
+	grid-area: goals;
+}
+.input-container:nth-of-type(3) {
+	grid-area: assists;
+}
+
 .position-title {
 	font-weight: var(--montserrat-normal);
-	width: max-content;
+	grid-area: position;
 	background-color: rgba(255, 255, 255, 0.2);
 	padding: 1em;
 	border-radius: 10px;
@@ -1198,11 +1208,6 @@ label[for="team-name"] {
 	}
 	.manage-players-form {
 		grid-template-columns: repeat(2, 1fr);
-	}
-	.save-btn.show,
-	.update-btn,
-	.delete-btn {
-		grid-row: 4;
 	}
 }
 @media screen and (max-width: 768px) {
