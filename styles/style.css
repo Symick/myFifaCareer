@@ -977,20 +977,76 @@ label[for="team-name"] {
 	=========================*/
 .create-form {
 	display: none;
-	grid-template-columns: repeat(6, 1fr);
+	grid-template-areas:
+		"position name games goals assists"
+		"position-input name-input games-input goals-input assists-input"
+		"button button . . .";
 	gap: 0.75em;
 	width: 100%;
 }
+/* set up grid areas create form */
+.create-form :nth-child(1) {
+	grid-area: position;
+}
+.create-form :nth-child(2) {
+	grid-area: name;
+}
+.create-form :nth-child(3) {
+	grid-area: games;
+}
+.create-form :nth-child(4) {
+	grid-area: goals;
+}
+.create-form :nth-child(5) {
+	grid-area: assists;
+}
+.create-form :nth-child(6) {
+	grid-area: position-input;
+}
+.create-form :nth-child(7) {
+	grid-area: name-input;
+}
+.create-form :nth-child(8) {
+	grid-area: games-input;
+}
+.create-form :nth-child(9) {
+	grid-area: goals-input;
+}
+.create-form :nth-child(10) {
+	grid-area: assists-input;
+}
+.create-form :nth-child(11) {
+	grid-area: button;
+}
+
+/* setup create form for keeper */
+.create-form.keeper-form {
+	grid-template-areas:
+		"position       games       . ."
+		"position-input games-input . ."
+		"button         button      . .";
+}
+.create-form.keeper-form :nth-child(1) {
+	grid-area: position;
+}
+.create-form.keeper-form :nth-child(2) {
+	grid-area: games;
+}
+.create-form.keeper-form :nth-child(3) {
+	grid-area: position-input;
+}
+.create-form.keeper-form :nth-child(4) {
+	grid-area: games-input;
+}
+.create-form.keeper-form :nth-child(5) {
+	grid-area: button;
+}
+
 .create-form.show {
 	display: grid;
 }
 .create-form.show ~ button {
 	display: none;
-}
-.player-input-titles {
-	display: grid;
-	grid-template-columns: repeat(6, 1fr);
-	grid-column: 1/-1;
 }
 .create-form h3::after {
 	content: ":";
