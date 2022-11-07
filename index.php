@@ -57,7 +57,7 @@
                 <label for="password">Password</label>
                 <div class="login--password-wrapper">
                   <input type="password" name="password" id="password" required />
-                  <i class="far fa-eye-slash" id="eye"></i>
+                  <i class="far fa-eye" data-eye></i>
                 </div>
                 <button type="submit" name="login-submit" class="btn login-btn">
                   Log in!

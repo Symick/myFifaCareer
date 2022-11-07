@@ -276,18 +276,23 @@ p::first-letter,
 
 .login--password-wrapper {
 	position: relative;
+	width: 90%;
+	margin: 1em auto;
+}
+.login--password-wrapper input {
 	width: 100%;
+	margin: unset;
 }
 
 .fa-eye,
 .fa-eye-slash {
 	position: absolute;
-	right: 7%;
+	right: 10px;
 	top: 50%;
 	transform: translateY(-50%);
 	color: #100000;
 	cursor: pointer;
-	font-size: 0.9em;
+	font-size: 1.5rem;
 }
 
 .login-btn {
@@ -671,7 +676,8 @@ transition between to pictures.
 	transform: translateY(-50%);
 }
 .two-input-container input,
-.password-container > * {
+.password-container > .password-checklist-container,
+.sign-up-div > .password-container {
 	width: calc(50% - 5px);
 }
 
@@ -679,18 +685,21 @@ transition between to pictures.
 	width: 100%;
 }
 
-.password-checklist-container {
+.password-checklist-container,
+.password-container {
 	position: relative;
 }
-.password-checklist-container input {
+.password-checklist-container input,
+.password-container > input {
 	width: 100%;
 }
-.password-checklist-container > input:focus-within + .list {
+
+.password-checklist-container > input:focus-within ~ .list {
 	display: block;
 }
 .list {
 	position: absolute;
-	top: 100%;
+	top: calc(10ch);
 	left: 0;
 	z-index: 999;
 	clip-path: polygon(
@@ -1237,7 +1246,8 @@ label[for="team-name"] {
 		margin: 0.5em auto;
 	}
 	.two-input-container input,
-	.password-container > * {
+	.password-container > .password-checklist-container,
+	.sign-up-div > .password-container {
 		width: 100%;
 		margin: 0.5em 0;
 	}
