@@ -59,19 +59,31 @@ if(isset($_SESSION['teamName'])) {
       </div>
       <div class="logo">
         <a href="#top-window">
-            <img src="img/logo.png" alt="Logo MyFIFAcareer"/>
+            <img src="img/logo.png" alt="Logo MyFIFAcareer" data-always-visible="false"/>
         </a>
       </div>
       <nav class="nav-menu" data-nav-page="statstracker">
         <ul>
           <li>
             <a href="#" id="chooseYourFifa">
-                <span class="nav-link-text">Choose your FIFA</span>
+                <span class="nav-link-text">
+                    <?php
+                        if(!isset($currentFifaVersion)) {
+                            echo "choose your fifa";
+                        } else {
+                            echo $currentFifaVersion;
+                        }
+                        
+                    ?>
+                </span>
                 <i class="fa-solid fa-caret-down"></i>
             </a>
           </li>
           <li> 
-            <a href="back-end/logout.php"> <i class="fas fa-sign-out-alt"></i> Logout!</a>
+            <a href="back-end/logout.php"> 
+                <i class="fas fa-sign-out-alt"></i> 
+                <span class="logout-text">Logout!</span>
+            </a>
           </li>
         </ul>
       </nav>
@@ -187,15 +199,19 @@ if(isset($_SESSION['teamName'])) {
         
         <div class="wrapper" id="player-content">
             <?php
-                    if(!isset($currentFifaVersion) || !isset($currentTeamName)) {
-                        echo "<section class=\"no-player-add\">
-                                <h2 class=\"title alt-title\"> choose a fifaversion and team</h2>
-                              </section>  
-                        ";
-                    }
-                ?>
+                if(!isset($currentFifaVersion) || !isset($currentTeamName)) {
+                    echo "<section class=\"no-player-add\">
+                            <h2 class=\"title alt-title\"> choose a fifaversion and team</h2>
+                            </section>  
+                    ";
+                }
+            ?>
             <section class="main-player-display">
-                <h2 class="title main-player-display--title">Add your players!</h2>
+                <h2 class="title main-player-display--title">
+                    <?php
+                        echo $currentTeamName; 
+                    ?>
+                </h2>
                 <div class="player-display">
                     <h2 class="position-group">Keepers</h2>
                     <div class="players-container">
