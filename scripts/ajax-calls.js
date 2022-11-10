@@ -30,10 +30,7 @@ addPlayerButton.forEach((addButton) => {
 					const newForm = document.createElement("form");
 					addFormAttributes(newForm);
 					newForm.innerHTML = res.success;
-					form.parentElement.insertBefore(
-						newForm,
-						form.parentElement.firstElementChild
-					);
+					form.parentElement.lastElementChild.after(newForm);
 					form.classList.remove("show");
 					const inputs = form.querySelectorAll("input");
 					inputs.forEach((input) => {
@@ -90,6 +87,7 @@ function updatePlayerFetch(e, saveButton) {
 		.then((res) => {
 			const deleteButton = form.querySelector(".delete-btn");
 			if (res.errorMessage !== false) {
+				console.log(res.errorMessage);
 				errorDisplay.textContent = res.errorMessage;
 				const updateButton = form.querySelector(".update-btn");
 				const inputs = form.querySelectorAll("input");
@@ -99,7 +97,8 @@ function updatePlayerFetch(e, saveButton) {
 			}
 			if (res.success !== false) {
 				updatePlayerDisplay(res.success, form);
-				errorDisplay.textContent = "player Updated!";
+				errorDisplay.innerHTML =
+					'<span class="success-text">player Updated!</span>';
 				deleteButton.removeAttribute("disabled");
 			}
 		})
@@ -122,7 +121,7 @@ function deletePlayerFetch(e, deleteButton) {
 			return res.text();
 		})
 		.then((res) => {
-			errorDisplay.textContent = res;
+			errorDisplay.innerHTML = res;
 			formParent.removeChild(form);
 		})
 		.catch((err) => console.error(err));
