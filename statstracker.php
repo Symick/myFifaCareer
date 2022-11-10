@@ -57,9 +57,9 @@ if(isset($_SESSION['teamName'])) {
             <span class="hamburger-menu--icon"></span>
           </div>
       </div>
-      <div class="logo">
+      <div class="logo" data-always-visible="false">
         <a href="#top-window">
-            <img src="img/logo.png" alt="Logo MyFIFAcareer" data-always-visible="false"/>
+            <img src="img/logo.png" alt="Logo MyFIFAcareer"/>
         </a>
       </div>
       <nav class="nav-menu" data-nav-page="statstracker">
@@ -201,7 +201,7 @@ if(isset($_SESSION['teamName'])) {
             <?php
                 if(!isset($currentFifaVersion) || !isset($currentTeamName)) {
                     echo "<section class=\"no-player-add\">
-                            <h2 class=\"title alt-title\"> choose a fifaversion and team</h2>
+                            <h2 class=\"title alt-title\"> choose a fifa version and team</h2>
                             </section>  
                     ";
                 }
