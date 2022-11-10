@@ -1214,6 +1214,12 @@ label[for="team-name"] {
 			"goals    assists"
 			"update   delete";
 	}
+	.create-form.keeper-form {
+		grid-template-areas:
+			"position       games      "
+			"position-input games-input"
+			"button         .    ";
+	}
 }
 @media screen and (max-width: 768px) {
 	/* ------------------ 
