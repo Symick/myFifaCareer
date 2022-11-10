@@ -63,7 +63,7 @@ session_start();
     
     if($serverRes->errorMessage === false) {
         addPlayer($conn, $currentTeamID, $playerName, $positionGroup, $position, $playedGames, $goals, $assists);
-        $serverRes->errorMessage = "player created!";
+        $serverRes->errorMessage = "<span class=\"success-text\"> player created!";
         if($positionGroup === "keeper") {
             $serverRes->success = " <h3 class=\"player-name\">{$playerName}:</h3>
                                     <h4 class=\"position-title\">{$position}</h4>

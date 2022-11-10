@@ -24,4 +24,4 @@
         exit();
     }
     deletePlayer($conn, $playerID);
-    echo "player is deleted";
+    echo "<span class=\"success-text\">player is deleted";

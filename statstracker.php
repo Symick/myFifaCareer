@@ -57,7 +57,7 @@ if(isset($_SESSION['teamName'])) {
             <span class="hamburger-menu--icon"></span>
           </div>
       </div>
-      <div class="logo">
+      <div class="logo" data-always-visible="false">
         <a href="#top-window">
             <img src="img/logo.png" alt="Logo MyFIFAcareer"/>
         </a>
@@ -66,12 +66,24 @@ if(isset($_SESSION['teamName'])) {
         <ul>
           <li>
             <a href="#" id="chooseYourFifa">
-                <span class="nav-link-text">Choose your FIFA</span>
+                <span class="nav-link-text">
+                    <?php
+                        if(!isset($currentFifaVersion)) {
+                            echo "choose your fifa";
+                        } else {
+                            echo $currentFifaVersion;
+                        }
+                        
+                    ?>
+                </span>
                 <i class="fa-solid fa-caret-down"></i>
             </a>
           </li>
           <li> 
-            <a href="back-end/logout.php"> <i class="fas fa-sign-out-alt"></i> Logout!</a>
+            <a href="back-end/logout.php"> 
+                <i class="fas fa-sign-out-alt"></i> 
+                <span class="logout-text">Logout!</span>
+            </a>
           </li>
         </ul>
       </nav>
@@ -183,29 +195,23 @@ if(isset($_SESSION['teamName'])) {
     <main>
         <section class="hero">
             <h1 class="title tacker-title">Track your FIFA stats!</h1>
-            <?php if (!isset($currentFifaVersion)) {
-                echo '<h2 class="title fifa-title"> Choose your version of FIFA!</h2>';
-            } else {
-                echo "<h2 class='title fifa-title'> chosen fifa: {$currentFifaVersion} </h2>";
-            } ?>
-                <?php if (!isset($currentTeamName)) {
-                echo '<h2 class="title fifa-title"> Choose a team!</h2>';
-            } else {
-                echo "<h2 class='title fifa-title'> chosen team: {$currentTeamName}</h2>";
-            } ?>
         </section>
         
         <div class="wrapper" id="player-content">
             <?php
-                    if(!isset($currentFifaVersion) || !isset($currentTeamName)) {
-                        echo "<section class=\"no-player-add\">
-                                <h2 class=\"title alt-title\"> choose a fifaversion and team</h2>
-                              </section>  
-                        ";
-                    }
-                ?>
+                if(!isset($currentFifaVersion) || !isset($currentTeamName)) {
+                    echo "<section class=\"no-player-add\">
+                            <h2 class=\"title alt-title\"> choose a fifa version and team</h2>
+                            </section>  
+                    ";
+                }
+            ?>
             <section class="main-player-display">
-                <h2 class="title main-player-display--title">Add your players!</h2>
+                <h2 class="title main-player-display--title">
+                    <?php
+                        echo $currentTeamName; 
+                    ?>
+                </h2>
                 <div class="player-display">
                     <h2 class="position-group">Keepers</h2>
                     <div class="players-container">
@@ -241,11 +247,9 @@ if(isset($_SESSION['teamName'])) {
                                 }
                             }   
                         ?>
-                        <form action="back-end/stats-back-end/add-players.php" method="post" class="create-form">
-                            <div class="player-input-titles">
-                                <h3>Name</h3>
-                                <h3>Games played</h3>
-                            </div>
+                        <form action="back-end/stats-back-end/add-players.php" method="post" class="create-form keeper-form">
+                            <h3>Name</h3>
+                            <h3>Games played</h3>
                             <input type="text" name="player-name" required autocomplete="off">
                             <input type="number" name="played-games" required>
                             <button type="submit" name="add-keeper" class="btn add-player-btn">Create keeper</button>
@@ -307,13 +311,11 @@ if(isset($_SESSION['teamName'])) {
                             }   
                         ?>
                         <form action="back-end/stats-back-end/add-players.php" method="post" class="create-form">
-                            <div class="player-input-titles">
-                                <h3>Position</h3>
-                                <h3>Name</h3>
-                                <h3>Games played</h3>
-                                <h3>Goals</h3>
-                                <h3>Assists</h3>
-                            </div>
+                            <h3>Position</h3>
+                            <h3>Name</h3>
+                            <h3>Games played</h3>
+                            <h3>Goals</h3>
+                            <h3>Assists</h3>
                             <input type="text" list="defenders" name="position" required autocomplete="off">
                             <input type="text" name="player-name" required autocomplete="off">
                             <input type="number" name="played-games" required>
@@ -378,13 +380,11 @@ if(isset($_SESSION['teamName'])) {
                             }   
                         ?>                        
                         <form action="back-end/stats-back-end/add-players.php" method="post" class="create-form">
-                            <div class="player-input-titles">
-                                <h3>Position</h3>
-                                <h3>Name</h3>
-                                <h3>Games played</h3>
-                                <h3>Goals</h3>
-                                <h3>Assists</h3>
-                            </div>
+                            <h3>Position</h3>
+                            <h3>Name</h3>
+                            <h3>Games played</h3>
+                            <h3>Goals</h3>
+                            <h3>Assists</h3>
                             <input type="text" list="midfielders" name="position" required autocomplete="off">
                             <input type="text" name="player-name" required autocomplete="off">
                             <input type="number" name="played-games" required>
@@ -449,13 +449,11 @@ if(isset($_SESSION['teamName'])) {
                             }   
                         ?>
                         <form action="back-end/stats-back-end/add-players.php" method="post" class="create-form">
-                            <div class="player-input-titles">
-                                <h3>Position</h3>
-                                <h3>Name</h3>
-                                <h3>Games played</h3>
-                                <h3>Goals</h3>
-                                <h3>Assists</h3>
-                            </div>
+                            <h3>Position</h3>
+                            <h3>Name</h3>
+                            <h3>Games played</h3>
+                            <h3>Goals</h3>
+                            <h3>Assists</h3>
                             <input type="text" list="attackers" name="position" required autocomplete="off">
                             <input type="text" name="player-name" required autocomplete="off">
                             <input type="number" name="played-games" required>

@@ -137,6 +137,9 @@ section {
 	font-size: 1.5rem;
 	color: var(--color-red);
 }
+.success-text {
+	color: var(--color-green);
+}
 p::first-letter,
 .title::first-letter {
 	text-transform: uppercase;
@@ -158,6 +161,7 @@ p::first-letter,
 	z-index: 999;
 	box-shadow: 0 0 0.5em 0.25em #111;
 	transition: background-color 200ms ease-in;
+	padding-inline: 1em;
 }
 
 /*
@@ -187,7 +191,6 @@ p::first-letter,
 	display: flex;
 	justify-content: flex-end;
 	gap: 1em;
-	padding-right: 1em;
 }
 .nav-menu[data-nav-page="index"] ul {
 	justify-content: space-around;
@@ -229,6 +232,9 @@ p::first-letter,
 	height: 2px;
 	transform: scaleX(0);
 	transform-origin: left;
+}
+.nav-link-text {
+	margin-right: 0.5ch;
 }
 
 /*  ==========
@@ -311,7 +317,6 @@ p::first-letter,
 	height: 50px;
 	display: flex;
 	align-items: center;
-	margin-left: 2em;
 	cursor: pointer;
 }
 .hamburger-menu--icon {
@@ -752,11 +757,10 @@ transition between to pictures.
     -------------------*/
 .fifa-bar {
 	width: 100%;
-	height: 5vh;
 	background: #640305;
 	position: fixed;
 	z-index: 500;
-	top: 0;
+	top: -100px;
 	transition: all 300ms ease-out;
 }
 .fifa-bar.show {
@@ -768,8 +772,9 @@ transition between to pictures.
 }
 
 .fifa-version-form {
-	display: flex;
-	justify-content: space-around;
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: space-evenly;
 	align-items: center;
 	color: var(--secondary-color);
 	font-size: 1.5rem;
@@ -791,17 +796,17 @@ input[type="radio"]:hover + label {
 	height: 100vh;
 	min-width: 82px;
 	padding-inline: 0.5em;
-	padding-top: 50px;
-	width: 15vw;
+	padding-top: 60px;
+	width: 250px;
 	position: fixed;
 	z-index: 700;
-	left: -15vw;
+	left: -250px;
 	top: 0;
 	background: var(--primary-color);
 	color: var(--secondary-color);
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 	transition: left 300ms ease-out;
 }
 
@@ -908,10 +913,9 @@ label[for="team-name"] {
 	width: 100%;
 }
 .tacker-title {
-	font-size: 5rem;
-	height: 5rem;
-	line-height: 0.9;
-	margin-left: 0.5em;
+	font-size: clamp(1.75rem, 7.5vw, 5rem);
+	margin-inline: auto;
+	margin-bottom: 0.1em;
 }
 .fifa-title {
 	font-size: 1rem;
@@ -923,12 +927,6 @@ label[for="team-name"] {
 	width: max-content;
 	text-align: left;
 }
-.tacker-title ~ .fifa-title:nth-of-type(1) {
-	top: 0;
-}
-.fifa-title:nth-of-type(2) {
-	top: 2ch;
-}
 /* ============================
 	styling player display
  */
@@ -936,7 +934,7 @@ label[for="team-name"] {
 .main-player-display,
 .no-player-add {
 	background-color: var(--primary-color);
-	border-radius: 100px;
+	border-radius: 15px;
 	padding: 2em;
 	color: var(--secondary-color);
 }
@@ -944,26 +942,17 @@ label[for="team-name"] {
 	display: none;
 }
 .player-display {
-	max-height: 100vh;
-	overflow-y: scroll;
 	overflow-x: hidden;
 	width: 100%;
 	padding: 1em;
-	scrollbar-width: thin;
-	scrollbar-color: #64030586 transparent;
-	position: relative;
+	border-bottom: 0.1px solid;
+	border-image: linear-gradient(#333 50%, transparent);
+	border-image-width: 0 0 10px 0;
+	border-image-slice: 49%;
 }
-.player-display::-webkit-scrollbar-track,
-.player-display::-webkit-scrollbar {
-	background-color: transparent;
-}
-.player-display::-webkit-scrollbar-thumb {
-	background-color: #64030586;
 
-	border-radius: 10vw;
-}
 .position-group {
-	font-size: 3rem;
+	font-size: clamp(1.5rem, 4vw, 2.5rem);
 	margin-bottom: 1.5em;
 }
 .add-player-btn {
@@ -977,20 +966,76 @@ label[for="team-name"] {
 	=========================*/
 .create-form {
 	display: none;
-	grid-template-columns: repeat(6, 1fr);
+	grid-template-areas:
+		"position name games goals assists"
+		"position-input name-input games-input goals-input assists-input"
+		"button button . . .";
 	gap: 0.75em;
 	width: 100%;
 }
+/* set up grid areas create form */
+.create-form :nth-child(1) {
+	grid-area: position;
+}
+.create-form :nth-child(2) {
+	grid-area: name;
+}
+.create-form :nth-child(3) {
+	grid-area: games;
+}
+.create-form :nth-child(4) {
+	grid-area: goals;
+}
+.create-form :nth-child(5) {
+	grid-area: assists;
+}
+.create-form :nth-child(6) {
+	grid-area: position-input;
+}
+.create-form :nth-child(7) {
+	grid-area: name-input;
+}
+.create-form :nth-child(8) {
+	grid-area: games-input;
+}
+.create-form :nth-child(9) {
+	grid-area: goals-input;
+}
+.create-form :nth-child(10) {
+	grid-area: assists-input;
+}
+.create-form :nth-child(11) {
+	grid-area: button;
+}
+
+/* setup create form for keeper */
+.create-form.keeper-form {
+	grid-template-areas:
+		"position       games       . ."
+		"position-input games-input . ."
+		"button         button      . .";
+}
+.create-form.keeper-form :nth-child(1) {
+	grid-area: position;
+}
+.create-form.keeper-form :nth-child(2) {
+	grid-area: games;
+}
+.create-form.keeper-form :nth-child(3) {
+	grid-area: position-input;
+}
+.create-form.keeper-form :nth-child(4) {
+	grid-area: games-input;
+}
+.create-form.keeper-form :nth-child(5) {
+	grid-area: button;
+}
+
 .create-form.show {
 	display: grid;
 }
 .create-form.show ~ button {
 	display: none;
-}
-.player-input-titles {
-	display: grid;
-	grid-template-columns: repeat(6, 1fr);
-	grid-column: 1/-1;
 }
 .create-form h3::after {
 	content: ":";
@@ -1001,12 +1046,13 @@ label[for="team-name"] {
 	padding: 0.25em;
 }
 .show-form-btn {
+	position: relative;
+	left: calc(100% - 15ch);
 	text-decoration: none;
 	padding: 0.5em;
 	font-size: 1.2rem;
-	margin-bottom: 1em;
+	margin-bottom: 2em;
 	transition: all 300ms ease-in;
-	float: right;
 }
 
 /* =======================
@@ -1016,10 +1062,15 @@ label[for="team-name"] {
 
 .manage-players-form {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-areas:
+		"name     name   name  ."
+		"position games  goals assists"
+		"update   delete .     .";
 	gap: 1em;
 	margin-bottom: 2em;
-	width: 100%;
+}
+.update-btn {
+	grid-area: update;
 }
 .manage-players-form .btn {
 	padding: 0.5em;
@@ -1027,27 +1078,27 @@ label[for="team-name"] {
 	transition: all 300ms ease-in-out;
 }
 .player-name {
-	grid-column: 1/-1;
-	font-size: 2rem;
+	grid-area: name;
+	font-size: clamp(1rem, 4vw, 2rem);
 	text-transform: uppercase;
 }
 .manage-players-form input:disabled {
 	background-color: transparent;
 	color: var(--secondary-color);
 	text-indent: 10px;
-	min-width: 3em;
 	font-size: 1.2rem;
-	max-width: 4.5em;
+	width: 6ch;
 }
 .manage-players-form input:enabled {
 	border-radius: 10vw;
 	text-align: center;
 	margin-left: 10px;
 	height: 100%;
-	max-width: 4.5em;
+	width: 6ch;
 }
 .save-btn {
 	display: none;
+	grid-area: update;
 }
 .save-btn.show:hover,
 .save-btn.show:focus,
@@ -1059,14 +1110,8 @@ label[for="team-name"] {
 	display: unset;
 }
 
-.save-btn.show,
-.update-btn,
 .delete-btn {
-	grid-row: 3;
-	width: max-content;
-}
-.delete-btn {
-	grid-column: 2;
+	grid-area: delete;
 }
 .delete-btn:disabled {
 	filter: grayscale(80%);
@@ -1082,14 +1127,24 @@ label[for="team-name"] {
 	background-color: rgba(255, 255, 255, 0.2);
 	padding: 1em;
 	border-radius: 10px;
-	width: max-content;
 }
 .input-container * {
 	display: inline-block;
 }
+/* setup grid areas for input containers */
+.input-container:nth-of-type(1) {
+	grid-area: games;
+}
+.input-container:nth-of-type(2) {
+	grid-area: goals;
+}
+.input-container:nth-of-type(3) {
+	grid-area: assists;
+}
+
 .position-title {
 	font-weight: var(--montserrat-normal);
-	width: max-content;
+	grid-area: position;
 	background-color: rgba(255, 255, 255, 0.2);
 	padding: 1em;
 	border-radius: 10px;
@@ -1107,11 +1162,31 @@ label[for="team-name"] {
 	styling for tablet viewport 
 	============================
 */
-@media (max-width: 1000px) {
-	/* styling nav */
-	.header {
-		justify-content: space-around;
+@media screen and (max-width: 1200px) {
+	.nav-link-text {
+		margin-right: 0;
 	}
+	.nav-menu[data-nav-page="statstracker"] ul {
+		gap: 0.75em;
+	}
+	.sidebar:not(.show):not(.show-immediately) + main {
+		animation: unset;
+	}
+	.sidebar.show + main {
+		animation: unset;
+	}
+	.create-form {
+		grid-template-areas:
+			"position name ."
+			"position-input name-input ."
+			"games goals assists"
+			"games-input goals-input assists-input"
+			"button button .";
+	}
+}
+
+@media (max-width: 1024px) {
+	/* styling nav */
 	.left:not([data-always-visible="true"]) {
 		display: none;
 	}
@@ -1132,21 +1207,18 @@ label[for="team-name"] {
 	.grid-container {
 		grid-template-columns: repeat(2, 1fr);
 	}
-
-	/* styling grids statstracker page */
-	.create-form {
-		grid-template-columns: repeat(2, 1fr);
-	}
-	.player-input-titles {
-		grid-template-columns: repeat(2, 1fr);
-	}
 	.manage-players-form {
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-areas:
+			"name     name"
+			"position games"
+			"goals    assists"
+			"update   delete";
 	}
-	.save-btn.show,
-	.update-btn,
-	.delete-btn {
-		grid-row: 4;
+	.create-form.keeper-form {
+		grid-template-areas:
+			"position       games      "
+			"position-input games-input"
+			"button         .    ";
 	}
 }
 @media screen and (max-width: 768px) {
@@ -1208,6 +1280,9 @@ label[for="team-name"] {
 	}
 
 	/* welcome section styling */
+	.nav-menu[data-nav-page="statstracker"] {
+		width: calc(100vw - 1rem - 50px);
+	}
 	.welcome-right {
 		display: none;
 	}
@@ -1251,8 +1326,50 @@ label[for="team-name"] {
 		width: 100%;
 		margin: 0.5em 0;
 	}
+	/* --------------------- 
+	styling statstracker page 
+	------------------------
+	*/
+	.logout-text {
+		display: none;
+	}
+	[data-always-visible="false"] {
+		display: none;
+	}
+	/* fifabar */
+	.fifa-version-form {
+		grid-auto-flow: row;
+	}
+	.fifa-bar {
+		width: fit-content;
+		right: 4.25rem;
+		top: -250px;
+	}
+	.create-form {
+		grid-template-areas:
+			"position name "
+			"position-input name-input "
+			"games goals"
+			"games-input goals-input"
+			"assists ."
+			"assists-input button";
+	}
+	.manage-players-form {
+		grid-template-areas:
+			"name"
+			"position"
+			"games"
+			"goals"
+			"assists"
+			"update"
+			"delete";
+	}
 }
-@media screen and (max-width: 500px) {
+
+@media screen and (max-width: 550px) {
+	.nav-menu[data-nav-page="statstracker"] {
+		font-size: 1.2rem;
+	}
 	.grid-container {
 		grid-template-columns: 1fr;
 	}
@@ -1262,6 +1379,36 @@ label[for="team-name"] {
 	/* sign up */
 	.home-link-text {
 		display: none;
+	}
+	/* statstracker */
+	.fifa-bar {
+		right: 2.5rem;
+	}
+	.create-form {
+		grid-template-areas:
+			"position"
+			"position-input"
+			"name"
+			"name-input"
+			"games"
+			"games-input"
+			"goals"
+			"goals-input"
+			"assists"
+			"assists-input"
+			"button";
+	}
+	.create-form.keeper-form {
+		grid-template-areas:
+			"position"
+			"position-input"
+			"games"
+			"games-input"
+			"button";
+	}
+
+	.position-title::before {
+		display: block;
 	}
 }
 
@@ -1316,12 +1463,12 @@ label[for="team-name"] {
 		margin-left: 0;
 	}
 	to {
-		margin-left: 16vw;
+		margin-left: 260px;
 	}
 }
 @keyframes toRight {
 	from {
-		margin-left: 16vw;
+		margin-left: 260px;
 	}
 	to {
 		margin-left: 0;
