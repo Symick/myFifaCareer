@@ -165,8 +165,8 @@ if(isset($_SESSION['teamName'])) {
                             echo ">";
                             echo "<label for=\"$teamName\"> $teamName</label>";
                             echo "<button type=\"submit\" name=\"remove-team\" class=\"remove-team-btn\" value=\"$teamName\"> 
-                            <i class=\"far fa-times-circle\"></i>
-                            </button>";
+                                    <i class=\"far fa-times-circle\"></i>
+                                  </button>";
                         }
                     }
                 }
@@ -189,7 +189,7 @@ if(isset($_SESSION['teamName'])) {
                   unset($_SESSION['created']);
               }
               ?>
-        </div>
+            </div>
         </form>
     </aside>
     <main>

@@ -3,8 +3,8 @@ require_once '../../database/db-handler.php';
 require_once '../../functions/statstracker-functions.php';
 session_start();
     if(!(isset($_POST["add-keeper"]) || isset($_POST["add-defender"]) || isset($_POST["add-midfielder"]) || isset($_POST["add-attacker"]))) {
-        // header("location: ../../../statstracker.php#player-content");
-        // exit();
+        header("location: ../../../statstracker.php#player-content");
+        exit();
     }
     $serverRes = (object) ['errorMessage'=> false, 'success'=> false];
     $errorArray = [];

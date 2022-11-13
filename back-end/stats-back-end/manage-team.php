@@ -14,23 +14,34 @@
         $currentFifaVersion = $_SESSION['fifa'];
         $currentUserID = $_SESSION['userID'];
         $toRemove = getTeamID($conn, $currentUserID, $currentFifaVersion, $teamName);
-        deleteTeam($conn, $toRemove);
-        
-        if(isset($_SESSION['teamName']) && $teamName == $_SESSION['teamName']) {
-            unset($_SESSION['teamName']);
+        if($toRemove !== false) {
+            deleteTeam($conn, $toRemove);
+            
+            if(isset($_SESSION['teamName']) && $teamName == $_SESSION['teamName']) {
+                unset($_SESSION['teamName']);
+            }
+            header('location: ../../statstracker.php#sidebar');
+            $_SESSION['error'] = "<span class=\"success-text\">{$teamName} has been deleted!</span>";
+            exit();
         }
-        header('location: ../../statstracker.php#sidebar');
-        $_SESSION['error'] = "{$teamName} has been deleted!";
+        $_SESSION['error'] = "team not deleted";
+        header("location: ../../statstracker.php#sidebar");
         exit();
     }
-        // get teamname and id
+    
+    //change team
     if (isset($_POST['team'])) {
         $currentFifaVersion = $_SESSION['fifa'];
         $currentUserID = $_SESSION['userID'];
         $teamName = $_POST['team'];
         $teamID = getTeamID($conn, $currentUserID, $currentFifaVersion, $teamName);
-        $_SESSION['teamName'] = $teamName;
-        $_SESSION['teamID'] = $teamID;
+        if($teamID !== false){
+            $_SESSION['teamName'] = $teamName;
+            $_SESSION['teamID'] = $teamID;
+        }
+        else {
+            $_SESSION['error'] = "Team does not exist";
+        }
         header('location: ../../statstracker.php#sidebar');
         exit();
     }

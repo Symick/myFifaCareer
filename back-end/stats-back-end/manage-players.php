@@ -17,8 +17,16 @@
         $playerName = trim($playerAndPosition[0]);
         $position = trim($playerAndPosition[1]);
         $playerID = getPlayerId($conn, $teamID, $position, $playerName);
-        deletePlayer($conn, $playerID);
-        header("location: ../../statstracker.php#");
+        if($playerID !== false) {
+            deletePlayer($conn, $playerID);
+            header("location: ../../statstracker.php#");
+            exit();
+        }
+        else {
+            header("location: ../../statstracker.php#player");
+            $_SESSION['error'] = "Player not deleted";
+            exit();
+        }
     }
     if(isset($_POST['update'])) {
         $updateButtonValue = $_POST['update'];
@@ -33,17 +41,24 @@
         $positionGroup = $_POST['position-group'];
 
         if(negativeNumber($playedGames, $goals, $assists) !== false) {
-        header("location: ../../statstracker.php#player-content");
-        $_SESSION[$positionGroup] = "stats must be postive numbers!";
-        exit();
+            header("location: ../../statstracker.php#player-content");
+            $_SESSION[$positionGroup] = "stats must be postive numbers!";
+            exit();
         }
         if($playedGames === 'NaN'|| $goals === 'NaN' || $assists === 'NaN') {
-        header("location: ../../statstracker.php#player-content");
-        $_SESSION[$positionGroup] = "make sure goals, assists and games are numbers!";
-        exit();
+            header("location: ../../statstracker.php#player-content");
+            $_SESSION[$positionGroup] = "make sure goals, assists and games are numbers!";
+            exit();
         }
-        updatePlayer($conn, $playerID, $playedGames, $goals, $assists);
-        header("location: ../../statstracker.php#{$playerName}");
+        if($playerID !== false) {
+            updatePlayer($conn, $playerID, $playedGames, $goals, $assists);
+            header("location: ../../statstracker.php#{$playerName}");
+            exit();
+        }
+        else {
+            $_SESSION['error'] = "player not updated";
+            header("location: ../../statstracker.php");
+        }
     }
 
      
