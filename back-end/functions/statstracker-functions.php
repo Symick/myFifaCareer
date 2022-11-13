@@ -74,6 +74,9 @@ function getTeamNames($conn, $usersID, $fifaVersion) {
 
 function getTeamID($conn, $userID, $fifaVersion, $teamName) {
     $team = teamNameInDatabase($conn, $userID, $fifaVersion, $teamName);
+    if(!$team) {
+        return false;
+    }
     return $team['teamID'];
 }
 function deleteTeam($conn, $teamID) {

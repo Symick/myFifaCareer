@@ -90,8 +90,7 @@ function usernameInDatabase($conn, $username)
     if ($row = mysqli_fetch_assoc($resultQuery)) {
         return $row;
     } else {
-        $error = false;
-        return $error;
+        return false;
     }
     mysqli_stmt_close($stmt);
 }
@@ -156,7 +155,6 @@ function loginUser($conn, $username, $password)
         unset($_SESSION['userID']);
         unset($_SESSION['username']);
         return 'username';
-        exit();
     }
     if ($usernameInDatabase !== false) {
         $_SESSION['userID'] = $usernameInDatabase['usersID'];
@@ -175,7 +173,6 @@ function loginUser($conn, $username, $password)
         unset($_SESSION['username']);
         $error = 'password';
         return $error;
-        exit();
     } else {
         return 'success';
     }

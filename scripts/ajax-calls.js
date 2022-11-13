@@ -118,11 +118,17 @@ function deletePlayerFetch(e, deleteButton) {
 		body: dataForm,
 	})
 		.then((res) => {
-			return res.text();
+			return res.json();
 		})
 		.then((res) => {
-			errorDisplay.innerHTML = res;
-			formParent.removeChild(form);
+			console.log(res);
+			if (res.errorMessage !== false) {
+				errorDisplay.innerHTML = res.errorMessage;
+			}
+			if (res.success !== false) {
+				errorDisplay.innerHTML = res.success;
+				formParent.removeChild(form);
+			}
 		})
 		.catch((err) => console.error(err));
 }

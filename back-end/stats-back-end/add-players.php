@@ -1,12 +1,13 @@
 <?php
-require_once '../database/db-handler.php';
-require_once '../functions/statstracker-functions.php';
-session_start();
     if(!(isset($_POST["add-keeper"]) || isset($_POST["add-defender"]) || isset($_POST["add-midfielder"]) || isset($_POST["add-attacker"]))) {
         header("location: ../../statstracker.php#player-content");
-        
         exit();
     }
+    
+    require_once '../database/db-handler.php';
+    require_once '../functions/statstracker-functions.php';
+    session_start();
+    
     $currentTeamID = $_SESSION['teamID'];
     $playerName = ucwords(trim($_POST["player-name"]));
     $playedGames = convertToValidInt(trim($_POST["played-games"]));
