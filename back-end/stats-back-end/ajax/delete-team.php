@@ -1,6 +1,6 @@
 <?php
     if (!isset($_POST['remove-team'])) {
-        header('location: ../../../statstracker.php]');
+        header('location: ../../../statstracker.php');
         exit();
     }
     session_start();
@@ -14,14 +14,13 @@
         $currentUserID = $_SESSION['userID'];
         $toRemove = getTeamID($conn, $currentUserID, $currentFifaVersion, $teamName);
         if($toRemove !== false) {
-            // deleteTeam($conn, $toRemove);
+            deleteTeam($conn, $toRemove);
             
             //make sure that if the team was selected when it was deleted, the session of the team is terminated
             if(isset($_SESSION['teamName']) && $teamName == $_SESSION['teamName']) {
                 unset($_SESSION['teamName']);
             }
-            header('location: ../../statstracker.php#sidebar');
-            $serverRes->success = "{$teamName} has been deleted!";
+            $serverRes->success = "<span class=\"success-text\">{$teamName} has been deleted!</span>";
         }
         else {
             $serverRes->errorMessage = "Team not deleted!";
